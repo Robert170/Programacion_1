@@ -343,6 +343,34 @@ int Ejercicio9()
 
 int Ejercicio10()
 {
+	string Operador;
+	int Val1;
+	int Val2;
+	cout << "Esribe el operador" << endl;
+	cin >> Operador;
+	cout << "Escriba un valor:" << endl;
+	cin >> Val1;
+	cout << "Escriba otro valr:" << endl;
+	cin >> Val2;
+	if (Operador == "+")
+	{
+		cout << Val1 << "+" << Val2 << "=" << Val1 + Val2 << endl;
+	}
+
+	if (Operador == "-")
+	{
+		cout << Val1 << "-" << Val2 << "=" << Val1 - Val2 << endl;
+	}
+
+	if (Operador == "/")
+	{
+		cout << Val1 << "/" << Val2 << "=" << Val1 / Val2 << endl;
+	}
+
+	if (Operador == "*")
+	{
+		cout << Val1 << "*" << Val2 << "=" << Val1 * Val2 << endl;
+	}
 	return 0;
 }
 
@@ -374,7 +402,7 @@ int Ejercicio11()
 
 int main()
 {
-	cout << "Escoja el numero del ejercicio del 1-7:\n";
+	cout << "Escoja el numero del ejercicio del 1-16:\n";
 	int Eleccion;
 	cin >> Eleccion;
 
