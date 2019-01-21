@@ -1,21 +1,25 @@
 #include "Includes.h"
 
-int Try1()
+void Try1()
 {
-	cout << "Porfavor ingrese su nombre:\n";
-	string Nombre;
-	cin >> Nombre; // read two strings
-	cout << "Porfavor ingrese su edad: " << '\n';
-	double Edad;
-	cin >> Edad;
 	double Meses;
+	double Edad;
+	string Nombre;
+
+	cout << "Porfavor ingrese su nombre:" << endl;
+	cin >> Nombre; // read two strings
+	cin.ignore();
+	cin.get();
+	cout << "Porfavor ingrese su edad: " << endl;
+	cin >> Edad;
+	cin.ignore();
+	cin.get();
 	Meses = Edad * 12;
-	cout << "Hola " << Nombre << " " << "edad:" << Edad << '\n';
+	cout << "Hola " << Nombre << " " << "edad:" << Edad << endl;
 	cout << "Su edad en meses es de: " << Meses;
 
 	cin.ignore();
 	cin.get();
-	return 0;
 }
 
 
@@ -68,17 +72,17 @@ int Try4()
 int Try5()
 {
 	double d = 0;
-	cout << "Ingrese un numero" << endl;
+
 	while (cin >> d)
 	{ // repeat the statements below
 	// as long as we type in numbers
 		int i = d; // try to squeeze a double into an int
 		char c = i; // try to squeeze an int into a char
 		int i2 = c; // get the integer value of the character
-		cout << "d==" << d // the original double
-			<< " i==" << i // converted to int
-			<< " i2==" << i2 // int value of char
-			<< " char(" << c << ")\n"; // the char
+		cout<< "d==" << d // the original double
+			<< "i==" << i // converted to int
+			<< "i2==" << i2 // int value of char
+			<< "char(" << c << ")\n"; // the char
 	}
 	return 0;
 }
@@ -310,7 +314,7 @@ int Ejercicio8()
 int Ejercicio9()
 {
 	string Numero;
-	cout << "Escribe el nombre de tu numero:" << endl;
+	cout << "Escribe el nombre de tu numero del 0 al 4:" << endl;
 	cin >> Numero;
 	if (Numero == "cero" || Numero == "Cero")
 	{
@@ -350,7 +354,7 @@ int Ejercicio10()
 	cin >> Operador;
 	cout << "Escriba un valor:" << endl;
 	cin >> Val1;
-	cout << "Escriba otro valr:" << endl;
+	cout << "Escriba otro valor:" << endl;
 	cin >> Val2;
 	if (Operador == "+")
 	{
@@ -381,7 +385,7 @@ int Ejercicio11()
 	int Dimes;//10 centavos
 	int Quarters;// 25 centavos
 	int Half; //50 centavos
-	int Dolar;//100centavos
+	int Dolar;//100 centavos
 	cout << "Cuantos pennys tienes?" << endl;
 	cin >> Penny;
 	cout << "Cuantos Nickel tienes?" << endl;
