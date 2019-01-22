@@ -1001,6 +1001,7 @@ void Ejercicio18()
 	vector<string> Name;
 	vector<int>score;
 	string Nombre;
+	string Eleccion,
 	int Edad;
 	
 	while (true)
@@ -1015,15 +1016,20 @@ void Ejercicio18()
 		{
 			return;
 		}
-	
+
 	}
+	for (int i = 0; i < Name.size(); i++)
+		cout << Name[i] << endl;
+
+	for (int i = 0; i < score.size(); i++)
+		cout << score[i] << endl;
 	
 }
 
 int main()
 {
 	int Eleccion;
-	cout << "Ingrese un numero dependiendo del programa que quiera ver:" << endl;
+	cout << "Ingrese un numero dependiendo del programa que quiera ver elige del 1 al 25:" << endl;
 	cin >> Eleccion;
 
 	switch (Eleccion)
@@ -1126,14 +1132,6 @@ int main()
 
 	case 25:
 		Ejercicio18();
-		break;
-
-	case 26:
-		Ejercicio10();
-		break;
-
-	case 27:
-		Ejercicio10();
 		break;
 	}
 
