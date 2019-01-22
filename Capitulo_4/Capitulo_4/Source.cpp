@@ -1,5 +1,4 @@
 #include "Includes.h"
-#include <math.h>
 
 void Try1()
 {
@@ -183,7 +182,7 @@ int Drill()
 
 		if (Val1 == Val3)
 		{
-			cout << "Val1 y Val33 son iguales:" << Val1 << " " << Val3 << endl;	
+			cout << "Val1 y Val3 son iguales:" << Val1 << " " << Val3 << endl;	
 		}
 
 		if (Val2 == Val3)
@@ -647,7 +646,7 @@ void Ejercicio9()
 	switch (Eleccion)
 	{
 	case 1:
-		cout << "Jugador uno jugo piedra"<< endl;
+		cout << "Jugador uno jugo piedra" << endl;
 		Azar = Numeros[3];
 		break;
 
@@ -657,13 +656,14 @@ void Ejercicio9()
 		break;
 
 	case 3:
-		cout << "Jugador uno eligio tijera"<< endl;
+		cout << "Jugador uno eligio tijera" << endl;
 		Azar = Numeros[2];
 		break;
 
 	default:
 		cout << "Ese no es una opcion";
 	}
+
 	switch (Azar)
 	{
 	case 1:
@@ -680,19 +680,344 @@ void Ejercicio9()
 		cout << "Maquina eligio tijera" << endl;
 		Azar = Numeros[2];
 		break;
+	}
+	if (Eleccion == 1 && Azar == 3)
+	{
+		cout << "Gano Jugador1" << endl;
+	}
+	if (Eleccion == 2 && Azar == 1)
+	{
+		cout << "Gano Jugador1" << endl;
+	}
+	if (Eleccion == 3 && Azar == 2)
+	{
+		cout << "Gano Jugador1" << endl;
+	}
 
-		if (Eleccion == 1 && Azar == 3)
+}
+
+void Ejercicio10()
+{
+	int Posicion=1;
+	int Inicio = 1;
+	int Valor = 1;
+	int Temp;
+	int Temp2;
+	int Contador=0;
+	vector<int>Primos;
+
+	while (Inicio<100)
+	{
+		Contador = 0;
+		Inicio = Inicio + 1;
+		Valor = Valor + 1;
+		Temp2 = Inicio;
+		Temp = Valor;
+
+		while (Inicio>=1)
 		{
-			cout << "Gano Jugador1" << endl;
+			if (Valor%Inicio == 0)
+			{
+				Contador = Contador + 1;
+			}
+
+			if (Contador == 3)
+			{
+				break;
+			}
+
+			Inicio = Inicio - 1;
 		}
-		if (Eleccion == 2 && Azar == 1)
+		if (Contador == 2)
 		{
-			cout << "Gano Jugador1" << endl;
+			Primos.push_back(Valor);
 		}
-		if (Eleccion == 3 && Azar == 2)
+		
+		Inicio = Temp2;
+
+	}
+
+	cout << "Estos son los numeros primos que se encuentran entre el 1 y el 100: " << endl;
+	for (int i = 0; i < Primos.size(); i++)
+	{
+		cout << Posicion << ":" << '\t' << Primos[i] << endl;
+		Posicion = Posicion + 1;
+	}
+}
+
+void Ejercicio11()
+{
+	int Posicion = 1;
+	int Inicio = 1;
+	int Valor = 1;
+	int Temp;
+	int Temp2;
+	int Contador = 0;
+	int Limite;
+	vector<int>Primos;
+	cout << "Hasta que numero quieres que se busque cuales son primos:" << endl;
+	cin >> Limite;
+
+	while (Inicio < Limite)
+	{
+		Contador = 0;
+		Inicio = Inicio + 1;
+		Valor = Valor + 1;
+		Temp2 = Inicio;
+		Temp = Valor;
+
+		while (Inicio >= 1)
 		{
-			cout << "Gano Jugador1" << endl;
+			if (Valor%Inicio == 0)
+			{
+				Contador = Contador + 1;
+			}
+
+			if (Contador == 3)
+			{
+				break;
+			}
+
+			Inicio = Inicio - 1;
 		}
+		if (Contador == 2)
+		{
+			Primos.push_back(Valor);
+		}
+
+		Inicio = Temp2;
+
+	}
+
+	cout << "Estos son los numeros primos que se encuentran entre el 1 y "<< Limite << " son:" << endl;
+	for (int i = 0; i < Primos.size(); i++)
+	{
+		cout << Posicion << ":" << '\t' << Primos[i] << endl;
+		Posicion = Posicion + 1;
+	}
+}
+
+void Ejercicio12()
+{
+	bool A[100];
+	for (int i = 1; i < 100; i++)
+		A[i] = true;
+
+	for (int i = 2; i < sqrt(100); i++)
+	{
+		if (A[i] == true)
+		{
+			for (int j = i * i; j < 100; j += i)
+			{
+				A[j] = false;
+			}
+		}
+	}
+	cout << "Los numeros primos que estan antes del " << 100 << " son:" << endl;
+	for (int i = 1; i < 100; i++)
+	{
+		if (A[i] == true)
+		{
+			cout << i << endl;
+		}
+	}
+}
+
+void Ejercicio13()
+{
+	bool A[100];
+	int Limite;
+	cout << "Por favor ingrese hasta que numero quiere que saquemos lon nueros binarios:" << endl;
+	cin >> Limite;
+	for (int i = 1; i < Limite; i++)
+		A[i] = true;
+
+	for (int i = 2; i < sqrt(Limite); i++)
+	{
+		if (A[i] == true)
+		{
+			for (int j = i * i; j < Limite; j += i)
+			{
+				A[j] = false;
+			}
+		}
+	}
+	cout << "Los numeros primos que estan antes del " << Limite << " son:" << endl;
+	for (int i = 1; i < Limite; i++)
+	{
+		if (A[i] == true)
+		{
+			cout << i << endl;
+		}
+	}
+}
+
+void Ejercicio14()
+{
+	int Posicion = 1;
+	int Inicio = 1;
+	int Valor = 1;
+	int Temp;
+	int Temp2;
+	int Contador = 0;
+	int Limite;
+	cout << "Hasta que numero quieres que se busque cuales son primos:" << endl;
+	cin >> Limite;
+
+	while (Inicio < Limite)
+	{
+		Contador = 0;
+		Inicio = Inicio + 1;
+		Valor = Valor + 1;
+		Temp2 = Inicio;
+		Temp = Valor;
+
+		while (Inicio >= 1)
+		{
+			if (Valor%Inicio == 0)
+			{
+				Contador = Contador + 1;
+			}
+
+			if (Contador == 3)
+			{
+				break;
+			}
+
+			Inicio = Inicio - 1;
+		}
+		Inicio = Temp2;
+		cout << Posicion << ":" << '\t' << Valor << endl;
+		Posicion = Posicion + 1;
+
+	}
+}
+
+void Moda(int Repeticion, int Valor)
+{
+	vector<int> Valores = { 4,5,5,6,8,7,5,6,2,0,3,5,7,5 };
+	cout << "El vector es:" << endl;
+	for (int i = 0; i < Valores.size(); i++)
+		cout << Valores[i] << endl;
+	cout << "La moda en el vector es: " << Valor << " se repite " << Repeticion << endl;
+}
+
+int Verificar(int Numero)
+{
+	vector<int> Valores = { 4,5,5,6,8,7,5,6,2,0,3,5,7,5 };
+	int x = 0;
+	for (int i = 0; i < Valores.size(); i++)
+	{
+		if (Numero == Valores[i])
+		{
+			x = x + 1;
+		}
+	}
+	return x;
+}
+
+void Ejercicio15()
+{
+	vector<int> Valores = {4,5,5,6,8,7,5,6,2,0,3,5,7,5};
+	int Numero = 0;
+	int Valor = 0;
+	int Repeticion = 0;
+	for (int i = 0; i < Valores.size(); i++)
+	{
+		Numero = Valores[i];
+		if (Repeticion <= Verificar(Numero))
+		{
+			Repeticion = Verificar(Numero);
+			Valor = Valores[i];
+		}
+	}
+	Moda(Repeticion, Valor);
+}
+
+void Ejercicio16()
+{
+	string Pal1;
+	string Pal2;
+	string Pal3;
+	string Temp;
+	cout << "Ingresa una palabra" << endl;
+	cin >> Pal1;
+	cout << "Ingresa una palabra" << endl;
+	cin >> Pal2;
+	cout << "Ingresa una palabra" << endl;
+	cin >> Pal3;
+
+	if (Pal1 > Pal2)
+	{
+		Temp = Pal1;
+		Pal1 = Pal2;
+		Pal2 = Temp;
+
+	}
+
+	if (Pal1 > Pal3)
+	{
+		Temp = Pal1;
+		Pal1 = Pal3;
+		Pal3 = Temp;
+	}
+
+	if (Pal2 > Pal3)
+	{
+		Temp = Pal2;
+		Pal2 = Pal3;
+		Pal3 = Temp;
+	}
+	cout << "Ordenadas del menor a mayor" << endl;
+	cout << Pal1 << " ," << Pal2 << " ," << Pal3 << endl;
+	cout << "La palabra menor es: " << Pal1;
+	cout << "La palabra mayor es: " << Pal2;
+}
+
+void Ejercicio17()
+{
+	int a;
+	int b;
+	int c;
+	double Resultado;
+	double Resultado2;
+	cout << "Vamos a resolver una ecuacion de ax2+bx+c" << endl;
+	cout << "Ingrese el valor de a:" << endl;
+	cin >> a;
+	cout << "Ingrese el valor de b:" << endl;
+	cin >> b;
+	cout << "Ingrese el valor de c:" << endl;
+	cin >> c;
+
+	//resolviendo 
+	Resultado = sqrt(a);
+	Resultado2 = sqrt(c);
+	cout << "El resutado es: " << "(" << Resultado << "x " << "*" << Resultado2 << ")" << 2 << endl;
+
+}
+
+void Ejercicio18()
+{
+	vector<string> Name;
+	vector<int>score;
+	string Nombre;
+	int Edad;
+	
+	while (true)
+	{
+		cout << "Ingrese su nombre segido de su edad, ejemplo Alan 5, si quiere salir escriba NoName 0" << endl;
+		cin >> Nombre >> Edad;
+
+		Name.push_back(Nombre);
+		score.push_back(Edad);
+
+		if (Nombre == "NoName" && Edad == 0)
+		{
+			return;
+		}
+	
+	}
+	
 }
 
 int main()
@@ -700,6 +1025,7 @@ int main()
 	int Eleccion;
 	cout << "Ingrese un numero dependiendo del programa que quiera ver:" << endl;
 	cin >> Eleccion;
+
 	switch (Eleccion)
 	{
 	case 1:
@@ -735,7 +1061,7 @@ int main()
 		break;
 
 	case 9:
-	Ejercicio2();
+		Ejercicio2();
 		break;
 
 	case 10:
@@ -745,23 +1071,69 @@ int main()
 	case 11:
 		Ejercicio4();
 		break;
+
 	case 12:
 		Ejercicio5();
 		break;
+
 	case 13:
 		Ejercicio6();
 		break;
+
 	case 14:
 		Ejercicio7();
 		break;
+
 	case 15:
 		Ejercicio8();
 		break;
+
 	case 16:
 		Ejercicio9();
 		break;
+
 	case 17:
-		Ejercicio2();
+		Ejercicio10();
+		break;
+
+	case 18:
+		Ejercicio11();
+		break;
+
+	case 19:
+		Ejercicio12();
+		break;
+
+	case 20:
+		Ejercicio13();
+		break;
+
+	case 21:
+		Ejercicio14();
+		break;
+
+	case 22:
+		Ejercicio15();
+		break;
+
+	case 23:
+		Ejercicio16();
+		break;
+
+	case 24:
+		Ejercicio17();
+		break;
+
+	case 25:
+		Ejercicio18();
+		break;
+
+	case 26:
+		Ejercicio10();
+		break;
+
+	case 27:
+		Ejercicio10();
 		break;
 	}
 
