@@ -372,27 +372,125 @@ void Ejercicio3() //////////////////////////////////////////////////////////////
 {
 	char Eleccion;
 	int Largo = 51;
-	vector<int> Menor = { 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49 };
-	vector<int> Mayor = { 50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100 };
-	cout << "Piense en un numero del 1 al 100, no haga trampa" << endl;
+	vector<int>Final;
+	vector<int> PoI;
+	vector<int> Numeros = { 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100 };
 	cout << "Tu numero es mayor o igual a 50? y/n" << endl; //1
 	cin >> Eleccion;
 	if (Eleccion == 'y')
 	{
-		for (int i = 0;  i<Mayor.size();++i)
+		while (Numeros.size()>51)
 		{
-			if (Mayor[i] < 90)
-			{
-				
-			}
+			Numeros.erase(Numeros.begin());
 		}
-		for (int i = 0; i < Mayor.size(); i++)
-			cout << Mayor[i] << endl;
+		for (int i = 0; i < Numeros.size(); i++)
+			cout << Numeros[i] << endl;
+
+		cout << "Tu numero es mayor o igual a 75? y/n" << endl; //2
+		cin >> Eleccion;
+
+		if (Eleccion == 'y')
+		{
+			while (Numeros.size() > 26)
+			{
+				Numeros.erase(Numeros.begin());
+			}
+			for (int i = 0; i < Numeros.size(); i++)
+				cout << Numeros[i] << endl;
+
+			cout << "Tu numero es par? y/n" << endl; //3
+			cin >> Eleccion;
+
+			if (Eleccion == 'y')
+			{
+				for (int i = 0; i < Numeros.size(); i++)
+				{
+					if (Numeros[i] % 2 == 0)
+					{
+						PoI.push_back(Numeros[i]);
+					}
+				}
+				for (int i = 0; i < PoI.size(); i++)
+					cout << PoI[i] << endl;
+
+				cout << "Tu numero es mayor o igual a 88? y/n" << endl; //4
+				cin >> Eleccion;
+
+				if (Eleccion == 'y')
+				{
+					while (PoI.size() > 7)
+					{
+						PoI.erase(PoI.begin());
+					}
+					for (int i = 0; i < PoI.size(); i++)
+						cout << PoI[i] << endl;
+
+					cout << "Tu numero es dibisible exacto de 4? y/n" << endl; //5
+					cin >> Eleccion;
+
+				}
+
+				if (Eleccion == 'y')
+				{
+					for (int i = 0; i < PoI.size(); i++)
+					{
+						if (PoI[i] % 4 == 0)
+						{
+							Final.push_back(PoI[i]);
+						}
+					}
+					for (int i = 0; i < Final.size(); i++)
+						cout << Final[i] << endl;
+				}
+
+				if (Eleccion == 'n')
+				{
+					for (int i = 0; i < PoI.size(); i++)
+					{
+						if (PoI[i] % 4 != 0)
+						{
+							Final.push_back(PoI[i]);
+						}
+					}
+					for (int i = 0; i < Final.size(); i++)
+						cout << Final[i] << endl;
+				}
+
+			}
+
+			if (Eleccion == 'n')
+			{
+				for (int i = 0; i < Numeros.size(); i++)
+				{
+					if (Numeros[i] % 2 != 0)
+					{
+						PoI.push_back(Numeros[i]);
+					}
+				}
+				for (int i = 0; i < PoI.size(); i++)
+					cout << PoI[i] << endl;
+			}
+
+		}
+		if (Eleccion == 'n')
+		{
+			while (Numeros.size() > 25)
+			{
+				Numeros.pop_back();
+			}
+			
+		}
+	
 	}
 	if (Eleccion == 'n')
 	{
-
+		while (Numeros.size() > 49)
+		{
+			Numeros.pop_back();
+		}
 	}
+	//for (int i = 0; i < Numeros.size(); i++)
+	//	cout << Numeros[i] << endl;
 }
 
 void Ejercicio4()
@@ -1001,29 +1099,31 @@ void Ejercicio18()
 	vector<string> Name;
 	vector<int>score;
 	string Nombre;
-	string Eleccion,
+	string Eleccion;
 	int Edad;
 	
 	while (true)
 	{
-		cout << "Ingrese su nombre segido de su edad, ejemplo Alan 5, si quiere salir escriba NoName 0" << endl;
+		cout << "Ingrese su nombre segido de su edad, ejemplo Alan 5" << endl;
+		cout << "si quiere salir escriba NoName 0" << endl;
 		cin >> Nombre >> Edad;
+
+		if (Nombre == "NoName" && Edad == 0)
+		{
+
+			for (int i = 0; i < Name.size(); i++)
+				cout << Name[i]<<"\t"<< score[i] << endl;
+
+			return;
+		}
 
 		Name.push_back(Nombre);
 		score.push_back(Edad);
 
-		if (Nombre == "NoName" && Edad == 0)
-		{
-			return;
-		}
-
 	}
-	for (int i = 0; i < Name.size(); i++)
-		cout << Name[i] << endl;
 
-	for (int i = 0; i < score.size(); i++)
-		cout << score[i] << endl;
-	
+	cin.ignore();
+	cin.get();
 }
 
 int main()
