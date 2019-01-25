@@ -371,126 +371,483 @@ void Ejercicio2()
 void Ejercicio3() ///////////////////////////////////////////////////////////////////////////////////
 {
 	char Eleccion;
-	int Largo = 51;
-	vector<int>Final;
-	vector<int> PoI;
-	vector<int> Numeros = { 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100 };
-	cout << "Tu numero es mayor o igual a 50? y/n" << endl; //1
+	vector<int> Numero;
+	cout << "Piensa en un numero del 1 al 100" << endl;
+	cout << "Tu numero es par? y/n" << endl; //1
 	cin >> Eleccion;
+	tolower(Eleccion);
+
+	for (int i = 1; i <= 100; i++)
+	{
+		Numero.push_back(i);
+	}
+	//Este if por si el numero es par
 	if (Eleccion == 'y')
 	{
-		while (Numeros.size()>51)
+		for (int i = 0; i < Numero.size(); i++)
 		{
-			Numeros.erase(Numeros.begin());
+			if (Numero[i] % 2 != 0)
+			{
+				Numero[i] = 0;
+			}
 		}
-		for (int i = 0; i < Numeros.size(); i++)
-			cout << Numeros[i] << endl;
-
-		cout << "Tu numero es mayor o igual a 75? y/n" << endl; //2
+		for (int i = 0; i < Numero.size(); i++)
+		{
+			if (Numero[i] != 0)
+			{
+				cout << Numero[i] << endl;
+			}
+		}
+		//inicio pregunta 2
+		cout << "Tu numero es divisible exacto entre 4? y/n" << endl; //2
+		Eleccion = ' ';
 		cin >> Eleccion;
+		tolower(Eleccion);
 
+		//Este if es por si el numero es divisible entre cuatro
 		if (Eleccion == 'y')
 		{
-			while (Numeros.size() > 26)
+			for (int i = 0; i < Numero.size(); i++)
 			{
-				Numeros.erase(Numeros.begin());
+				if (Numero[i] % 4 != 0)
+				{
+					Numero[i] = 0;
+				}
 			}
-			for (int i = 0; i < Numeros.size(); i++)
-				cout << Numeros[i] << endl;
-
-			cout << "Tu numero es par? y/n" << endl; //3
+			for (int i = 0; i < Numero.size(); i++)
+			{
+				if (Numero[i] != 0)
+				{
+					cout << Numero[i] << endl;
+				}
+			}
+				
+			cout << "Tu numero es divisible exacto entre 8? y/n" << endl; //3
+			Eleccion = ' ';
 			cin >> Eleccion;
+			tolower(Eleccion);
 
+			//Por si el numero es divisible entre 8
 			if (Eleccion == 'y')
 			{
-				for (int i = 0; i < Numeros.size(); i++)
+				for (int i = 0; i < Numero.size(); i++)
 				{
-					if (Numeros[i] % 2 == 0)
+					if (Numero[i] % 8 != 0)
 					{
-						PoI.push_back(Numeros[i]);
+						Numero[i] = 0;
 					}
 				}
-				for (int i = 0; i < PoI.size(); i++)
-					cout << PoI[i] << endl;
+				for (int i = 0; i < Numero.size(); i++)
+				{
+					if (Numero[i] != 0)
+					{
+						cout << Numero[i] << endl;
+					}
+				}
 
-				cout << "Tu numero es mayor o igual a 88? y/n" << endl; //4
+				cout << "Tu numero es divisible exacto entre 16? y/n" << endl; //4
+				Eleccion = ' ';
 				cin >> Eleccion;
+				tolower(Eleccion);
 
+				//Si el numero es divisible entre 16
 				if (Eleccion == 'y')
 				{
-					while (PoI.size() > 7)
+					for (int i = 0; i < Numero.size(); i++)
 					{
-						PoI.erase(PoI.begin());
-					}
-					for (int i = 0; i < PoI.size(); i++)
-						cout << PoI[i] << endl;
-
-					cout << "Tu numero es dibisible exacto de 4? y/n" << endl; //5
-					cin >> Eleccion;
-
-				}
-
-				if (Eleccion == 'y')
-				{
-					for (int i = 0; i < PoI.size(); i++)
-					{
-						if (PoI[i] % 4 == 0)
+						if (Numero[i] % 16 != 0)
 						{
-							Final.push_back(PoI[i]);
+							Numero[i] = 0;
 						}
 					}
-					for (int i = 0; i < Final.size(); i++)
-						cout << Final[i] << endl;
+					for (int i = 0; i < Numero.size(); i++)
+					{
+						if (Numero[i] != 0)
+						{
+							cout << Numero[i] << endl;
+						}
+					}
+
+					cout << "Tu numero es divisible exacto entre 32? y/n" << endl; //5
+					Eleccion = ' ';
+					cin >> Eleccion;
+					tolower(Eleccion);
+
+					if (Eleccion == 'y')
+					{
+						for (int i = 0; i < Numero.size(); i++)
+						{
+							if (Numero[i] % 32 != 0)
+							{
+								Numero[i] = 0;
+							}
+						}
+						for (int i = 0; i < Numero.size(); i++)
+						{
+							if (Numero[i] != 0)
+							{
+								cout << Numero[i] << endl;
+							}
+						}
+
+						cout << "Tu numero es menor a 60? y/n" << endl; //6/////
+						Eleccion = ' ';
+						cin >> Eleccion;
+						tolower(Eleccion);
+
+						if (Eleccion == 'y')
+						{
+							for (int i = 0; i < Numero.size(); i++)
+							{
+								if (Numero[i] == 0)
+								{
+									continue;
+								}
+								else
+								{
+									cout << "Tu numero es: " << Numero[i] << endl;
+									return;
+								}
+							}
+
+						}
+						if (Eleccion == 'n')
+						{
+							cout << "Tu numero es menor a 70? y/n" << endl; //7/////
+							Eleccion = ' ';
+							cin >> Eleccion;
+							tolower(Eleccion);
+
+							if (Eleccion == 'y')
+							{
+								cout << "Tu numero es: 64" << endl;
+								return;
+							}
+
+							if (Eleccion == 'n')
+							{
+								cout << "Tu numero es: 96" << endl;
+								return;
+							}
+						
+						}
+					}
+					if (Eleccion == 'n')
+					{
+						for (int i = 0; i < Numero.size(); i++)
+						{
+							if (Numero[i] % 32 == 0)
+							{
+								Numero[i] = 0;
+							}
+						}
+						for (int i = 0; i < Numero.size(); i++)
+						{
+							if (Numero[i] != 0)
+							{
+								cout << Numero[i] << endl;
+							}
+						}
+						cout << "Tu numero es divisible exacto entre ? y/n" << endl; //6/////
+						Eleccion = ' ';
+						cin >> Eleccion;
+						tolower(Eleccion);
+					}
+
 				}
 
+				//si no es divisible entre 16
 				if (Eleccion == 'n')
 				{
-					for (int i = 0; i < PoI.size(); i++)
+					for (int i = 0; i < Numero.size(); i++)
 					{
-						if (PoI[i] % 4 != 0)
+						if (Numero[i] % 16 == 0)
 						{
-							Final.push_back(PoI[i]);
+							Numero[i] = 0;
 						}
 					}
-					for (int i = 0; i < Final.size(); i++)
-						cout << Final[i] << endl;
+					for (int i = 0; i < Numero.size(); i++)
+					{
+						if (Numero[i] != 0)
+						{
+							cout << Numero[i] << endl;
+						}
+					}
+
+					cout << "Tu numero mayor a 40? y/n" << endl; //5
+					Eleccion = ' ';
+					cin >> Eleccion;
+					tolower(Eleccion);
 				}
-
 			}
-
+			//Si no es divisible entre 8  entra aqui
 			if (Eleccion == 'n')
 			{
-				for (int i = 0; i < Numeros.size(); i++)
+				for (int i = 0; i < Numero.size(); i++)
 				{
-					if (Numeros[i] % 2 != 0)
+					if (Numero[i] % 8 == 0)
 					{
-						PoI.push_back(Numeros[i]);
+						Numero[i] = 0;
 					}
 				}
-				for (int i = 0; i < PoI.size(); i++)
-					cout << PoI[i] << endl;
-			}
+				for (int i = 0; i < Numero.size(); i++)
+				{
+					if (Numero[i] != 0)
+					{
+						cout << Numero[i] << endl;
+					}
+				}
 
+				cout << "Tu numero es mayor a 50? y/n" << endl; //4
+				Eleccion = ' ';
+				cin >> Eleccion;
+				tolower(Eleccion);
+				//si el numero es mayor a 50
+				if (Eleccion == 'y')
+				{
+					for (int i = 0; i < Numero.size(); i++)
+					{
+						Numero.erase(Numero.begin());
+					}
+					for (int i = 0; i < Numero.size(); i++)
+					{
+						if (Numero[i] != 0)
+						{
+							cout << Numero[i] << endl;
+						}
+					}
+
+					cout << "Tu numero es mayor a 50? y/n" << endl; //5
+					Eleccion = ' ';
+					cin >> Eleccion;
+					tolower(Eleccion);
+				}
+				//si numero no es mayor a 50
+				if (Eleccion == 'n')
+				{
+					for (int i = 0; i < Numero.size(); i++)
+					{
+						Numero.pop_back();
+					}
+					for (int i = 0; i < Numero.size(); i++)
+					{
+						if (Numero[i] != 0)
+						{
+							cout << Numero[i] << endl;
+						}
+					}
+
+					cout << "Tu numero es mayor a 50? y/n" << endl; //5
+					Eleccion = ' ';
+					cin >> Eleccion;
+					tolower(Eleccion);
+				}
+			}
 		}
+		//Este if es por si el numero no es divisible entre cuatro
 		if (Eleccion == 'n')
 		{
-			while (Numeros.size() > 25)
+			for (int i = 0; i < Numero.size(); i++)
 			{
-				Numeros.pop_back();
+				if (Numero[i] % 4 == 0)
+				{
+					Numero[i] = 0;
+				}
 			}
-			
+			for (int i = 0; i < Numero.size(); i++)
+			{
+				if (Numero[i] != 0)
+				{
+					cout << Numero[i] << endl;
+				}
+			}
+
+			cout << "Tu numero es Mayor a 50? y/n" << endl; //3
+			Eleccion = ' ';
+			cin >> Eleccion;
+			tolower(Eleccion);
+
+			//si numero es mayor a 50
+			if (Eleccion == 'y')
+			{
+				for (int i = 0; i < Numero.size(); i++)
+				{
+					Numero.erase(Numero.begin());
+				}
+				for (int i = 0; i < Numero.size(); i++)
+				{
+					if (Numero[i] != 0)
+					{
+						cout << Numero[i] << endl;
+					}
+				}
+
+				cout << "Tu numero es Mayor a 75? y/n" << endl; //4
+				Eleccion = ' ';
+				cin >> Eleccion;
+				tolower(Eleccion);
+
+				//si numero es mayor a 75
+				if (Eleccion == 'y')
+				{
+					for (int i = 0; i < Numero.size(); i++)
+					{
+						Numero.erase(Numero.begin());
+					}
+					for (int i = 0; i < Numero.size(); i++)
+					{
+						if (Numero[i] != 0)
+						{
+							cout << Numero[i] << endl;
+						}
+					}
+
+					cout << "Tu numero es Menor a 90? y/n" << endl; //5
+					Eleccion = ' ';
+					cin >> Eleccion;
+					tolower(Eleccion);
+
+					//si es menor a 90
+					if (Eleccion == 'y')
+					{
+						for (int i = 0; i < Numero.size(); i++)
+						{
+							Numero.pop_back();
+						}
+						for (int i = 0; i < Numero.size(); i++)
+						{
+							if (Numero[i] != 0)
+							{
+								cout << Numero[i] << endl;
+							}
+						}
+
+						cout << "Tu numero es Mayor a 80? y/n" << endl; //6
+						Eleccion = ' ';
+						cin >> Eleccion;
+						tolower(Eleccion);
+
+						if (Eleccion == 'n')
+						{
+							cout << "Tu numero es: 78" << endl;
+							return;
+						}
+						if (Eleccion == 'y')
+						{
+							cout << "Tu numero es mayor a 85?" << endl;//7
+							Eleccion = ' ';
+							cin >> Eleccion;
+							tolower(Eleccion);
+							if (Eleccion == 'y')
+							{
+								cout << "Tu numero es: 86" << endl;
+								return;
+							}
+							if(Eleccion=='n')
+							{
+								cout << "Tu numero es: 82" << endl;
+								return;
+							}
+							
+						}
+					}
+					//numero no es menor a 90
+					if (Eleccion == 'n')
+					{
+						for (int i = 0; i < Numero.size(); i++)
+						{
+							Numero.erase(Numero.begin());
+						}
+						for (int i = 0; i < Numero.size(); i++)
+						{
+							if (Numero[i] != 0)
+							{
+								cout << Numero[i] << endl;
+							}
+						}
+
+						cout << "Tu numero es Mayor a 90? y/n" << endl; //6
+						Eleccion = ' ';
+						cin >> Eleccion;
+						tolower(Eleccion);
+
+						if (Eleccion == 'y')
+						{
+							cout << "Tu numero es mayor a 96?" << endl;
+
+						}
+						if (Eleccion == 'n')
+						{
+							cout << "Tu numero es: 90" << endl;
+							return;
+						}
+					}
+				}
+				//si no es mayor a 75
+				if (Eleccion == 'n')
+				{
+					for (int i = 0; i < Numero.size(); i++)
+					{
+						Numero.pop_back();
+					}
+					for (int i = 0; i < Numero.size(); i++)
+					{
+						if (Numero[i] != 0)
+						{
+							cout << Numero[i] << endl;
+						}
+					}
+
+					cout << "Tu numero es Menor a 75? y/n" << endl; //5
+					Eleccion = ' ';
+					cin >> Eleccion;
+					tolower(Eleccion);
+				}
+			}
+			//si numero no es mayor a 50
+			if (Eleccion == 'n')
+			{
+				for (int i = 0; i < Numero.size(); i++)
+				{
+					Numero.pop_back();
+				}
+				for (int i = 0; i < Numero.size(); i++)
+				{
+					if (Numero[i] != 0)
+					{
+						cout << Numero[i] << endl;
+					}
+				}
+
+				cout << "Tu numero es Menor a 75? y/n" << endl; //4
+				Eleccion = ' ';
+				cin >> Eleccion;
+				tolower(Eleccion);
+			}
 		}
-	
 	}
+
+	//Este if es por si el numero es impar
 	if (Eleccion == 'n')
 	{
-		while (Numeros.size() > 49)
+		for (int i = 0; i < Numero.size(); i++)
 		{
-			Numeros.pop_back();
+			if (Numero[i] % 2 == 0)
+			{
+				Numero[i] = 0;
+			}
 		}
+		for (int i = 0; i < Numero.size(); i++)
+		{
+			if (Numero[i] != 0)
+			{
+				cout << Numero[i] << endl;
+			}
+		}
+
 	}
-	//for (int i = 0; i < Numeros.size(); i++)
-	//	cout << Numeros[i] << endl;
+	//for (int i = 0; i < Numero.size(); i++)
+	//	cout << Numero[i] << endl;
 }
 
 void Ejercicio4()
