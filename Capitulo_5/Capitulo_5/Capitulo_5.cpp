@@ -484,6 +484,147 @@ void Ejercicio10()
 	
 }
 
+void Ejercicio11()
+{
+	int Toros = 0;
+	int Vacas = 0;
+	int Val1 = 0;
+	int Val2 = 0;
+	int Val3 = 0;
+	int Val4 = 0;
+	int N = 10;
+	int Random;
+	vector <int> Valores;
+	cout << "Vamoa jugar el uego toros y vacas, tienes que adivinar el numero elegido, ingresa 4 numeros si tienes alguno bien te diremos 1 toro" << endl;
+	cout << "si tienes dos numeros bien diremos 2 toros y asi sucecivamente hasta que tengas 4 toros, comencemos, las vacas son los numeros que tiene incorrectos" << endl;
+	cout << "Ingrese un numero aleatorio" << endl;
+
+	srand(time(0));
+	for (int i = 0; i < 4; i++)
+	{
+		Random = rand() % N;
+		Valores.push_back(Random);
+		N = N - 1;
+	}
+
+	while (Toros < 4)
+	{
+		Toros = 0;
+		Vacas = 0;
+		cout << "Ingrese su primer valor" << endl;
+		cin >> Val1;
+		cout << "Ingrese su segundo valor" << endl;
+		cin >> Val2;
+		cout << "Ingrese su tercer valor" << endl;
+		cin >> Val3;
+		cout << "Ingrese su cuarto valor" << endl;
+		cin >> Val4;
+
+		if (Val1 == Valores[0])
+		{
+			Toros = Toros + 1;
+		}
+		else
+		{
+			Vacas = Vacas + 1;
+		}
+
+		if (Val2 == Valores[1])
+		{
+			Toros = Toros + 1;
+		}
+		else
+		{
+			Vacas = Vacas + 1;
+		}
+
+		if (Val3 == Valores[2])
+		{
+			Toros = Toros + 1;
+		}
+		else
+		{
+			Vacas = Vacas + 1;
+		}
+
+		if (Val4 == Valores[3])
+		{
+			Toros = Toros + 1;
+		}
+		else
+		{
+			Vacas = Vacas + 1;
+		}
+		cout << "Toros: " << Toros << endl;
+		cout << "Vacas: " << Vacas << endl;
+
+	}
+
+	cout << "Felicidades adivinaste el numero el cual es: " << Val1 << Val2 << Val3 << Val4 << endl;
+
+}
+int Drill()
+try {
+	
+	keep_window_open();
+	return 0;
+}
+catch (exception& e) {
+	cerr << "error: " << e.what() << '\n';
+	keep_window_open();
+	return 1;
+}
+//catch (exception& e) {
+//	cerr << "Oops: unknown exception!\n";
+//	keep_window_open();
+//	return 2;
+
+//}
+
+int Ejercicio12()
+{
+	string Day;
+	int Number;
+	int Suma = 0;
+	vector < string > Dias;
+	vector < int > Numero;
+
+	while (Dias.size() < 6)
+	{
+		cout << "Ingresu un dia de la semana con su respectivo numero" << endl;
+		cin >> Day;
+		cin>> Number;
+
+		if (Day == "lunes" || Day == "martes" || Day == "miercoles" || Day == "jueves" || Day == "viernes" || Day == "sabado" || Day == "domigo")
+		{
+			Dias.push_back(Day);
+		}
+		else
+		{
+			cout << "Ese dia no existe" << endl;
+			return 1;
+		}
+		if (Number <= 0 || Number > 31)
+		{
+			cout << "El numero de dia esta fuera de rango" << endl;
+			return 1;
+		}
+		else
+		{
+			Numero.push_back(Number);
+		}
+
+	}
+	for (int i = 0; i < 6; i++)
+	{
+		Suma = Suma + Numero[i];
+	}
+	cout << "La suma de todos los dias(numero) es de: " << Suma << endl;
+
+
+
+}
+
 int main()
 {
 	int Eleccion;
@@ -550,6 +691,10 @@ int main()
 
 	case 15:
 		Ejercicio10();
+		break;
+
+	case 16:
+		Ejercicio11();
 		break;
 
 	default:
