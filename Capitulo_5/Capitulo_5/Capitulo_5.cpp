@@ -1057,6 +1057,114 @@ catch (...) {
 	return 2;
 }
 
+int Drill21()
+try {
+	int x = 2; 
+	double d = 5 / (x/2); 
+	if (d == 2 * x + 1)
+	{
+		cout << "Success!\n";
+	}
+	keep_window_open();
+	return 0;
+}
+catch (exception& e) {
+	cerr << "error: " << e.what() << '\n';
+	keep_window_open();
+	return 1;
+}
+catch (...) {
+	cerr << "Oops: unknown exception!\n";
+	keep_window_open();
+	return 2;
+}
+
+int Drill22()
+try {
+	string s = "Success!\n"; // tenia <char> eso es para vectores 
+	for (int i = 0; i < 10; ++i) //tenia <= eso esta mal
+	{
+		cout << s[i];
+	}
+	keep_window_open();
+	return 0;
+}
+catch (exception& e) {
+	cerr << "error: " << e.what() << '\n';
+	keep_window_open();
+	return 1;
+}
+catch (...) {
+	cerr << "Oops: unknown exception!\n";
+	keep_window_open();
+	return 2;
+}
+
+int Drill23()
+try {
+	int i = 0; 
+	int j = 0;
+	while (i < 10)
+	{
+		++i;
+	}
+	if (j < i)
+	{
+		cout << "Success!\n";
+	}
+	keep_window_open();
+	return 0;
+}
+catch (exception& e) {
+	cerr << "error: " << e.what() << '\n';
+	keep_window_open();
+	return 1;
+}
+catch (...) {
+	cerr << "Oops: unknown exception!\n";
+	keep_window_open();
+	return 2;
+}
+
+int Drill24()
+try {
+	int x = 4; 
+	double d = 5 / (x-2); 
+	if (d = x - 2 + 0.5)
+	{
+		cout << "Success!\n";
+	}
+	keep_window_open();
+	return 0;
+}
+catch (exception& e) {
+	cerr << "error: " << e.what() << '\n';
+	keep_window_open();
+	return 1;
+}
+catch (...) {
+	cerr << "Oops: unknown exception!\n";
+	keep_window_open();
+	return 2;
+}
+
+int Drill25()
+try {
+	cout << "Success!\n"; // tenia cin en lugar de cout
+	keep_window_open();
+	return 0;
+}
+catch (exception& e) {
+	cerr << "error: " << e.what() << '\n';
+	keep_window_open();
+	return 1;
+}
+catch (...) {
+	cerr << "Oops: unknown exception!\n";
+	keep_window_open();
+	return 2;
+}
+
 int main()
 {
 	int Eleccion;
@@ -1209,7 +1317,7 @@ int main()
 		Drill20();
 		break;
 
-	/*case 37:
+	case 37:
 		Drill21();
 		break;
 
@@ -1219,7 +1327,15 @@ int main()
 
 	case 39:
 		Drill23();
-		break;*/
+		break;
+
+	case 40:
+		Drill24();
+		break;
+
+	case 41:
+		Drill25();
+		break;
 
 	default:
 		break;
