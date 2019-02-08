@@ -67,7 +67,7 @@ void Try4() ///////////////////////
 	cout << "ingrese un valor" << endl;
 	double Valor;
 	cin >> Valor;
-	if (!cin)
+	if (Valor<10)
 	{
 		error("No se puede inresar ese valor");
 	}
@@ -77,6 +77,7 @@ void Try5()
 {
 	//este codigo es funcional bajo ciertos casos, por ejemplo:
 	vector<double> temps; 
+	cout << "Ingrese tempetraturas" << endl;
 	for (double temp; cin >> temp; ) 
 		temps.push_back(temp);
 	
@@ -563,23 +564,6 @@ void Ejercicio11()
 	cout << "Felicidades adivinaste el numero el cual es: " << Val1 << Val2 << Val3 << Val4 << endl;
 
 }
-int Drill()
-try {
-	
-	keep_window_open();
-	return 0;
-}
-catch (exception& e) {
-	cerr << "error: " << e.what() << '\n';
-	keep_window_open();
-	return 1;
-}
-//catch (exception& e) {
-//	cerr << "Oops: unknown exception!\n";
-//	keep_window_open();
-//	return 2;
-
-//}
 
 int Ejercicio12()
 {
@@ -623,6 +607,454 @@ int Ejercicio12()
 
 
 
+}
+
+int Drill1()
+try {
+
+	cout << "Success!\n"; // el cout tenia la C en mayuscvulas
+	keep_window_open();
+	return 0;
+}
+catch (exception& e) {
+	cerr << "error: " << e.what() << '\n';
+	keep_window_open();
+	return 1;
+}
+catch (...) {
+	cerr << "Oops: unknown exception!\n";
+	keep_window_open();
+	return 2;
+}
+
+int Drill2()
+try {
+
+	cout << "Success!\n"; //Le faltava una comilla despues de n
+	keep_window_open();
+	return 0;
+}
+catch (exception& e) {
+	cerr << "error: " << e.what() << '\n';
+	keep_window_open();
+	return 1;
+}
+catch (...) {
+	cerr << "Oops: unknown exception!\n";
+	keep_window_open();
+	return 2;
+}
+
+int Drill3()
+try {
+
+	cout << "Success" << !"\n"; //Le faltaba ; y una comilla 
+	keep_window_open();
+	return 0;
+}
+catch (exception& e) {
+	cerr << "error: " << e.what() << '\n';
+	keep_window_open();
+	return 1;
+}
+catch (...) {
+	cerr << "Oops: unknown exception!\n";
+	keep_window_open();
+	return 2;
+}
+
+int Drill4()
+try {
+
+	cout << "success" << '\n'; //Le faltaban las comillas en success
+	keep_window_open();
+	return 0;
+}
+catch (exception& e) {
+	cerr << "error: " << e.what() << '\n';
+	keep_window_open();
+	return 1;
+}
+catch (...) {
+	cerr << "Oops: unknown exception!\n";
+	keep_window_open();
+	return 2;
+}
+
+int Drill5()
+try {
+
+	int res = 7; // Tenia string en lugar de int
+	vector<int> v(10); 
+	v[5] = res; 
+	cout << "Success!\n";
+	keep_window_open();
+	return 0;
+}
+catch (exception& e) {
+	cerr << "error: " << e.what() << '\n';
+	keep_window_open();
+	return 1;
+}
+catch (...) {
+	cerr << "Oops: unknown exception!\n";
+	keep_window_open();
+	return 2;
+}
+
+int Drill6()
+try {
+
+	vector<int> v(10); 
+	v[5] = 7;  //tenia () en lugar de []
+	if (v[5] == 7) //tenia () en lugar de [] y tenia !en lugar de ==
+	{
+		cout << "Success!\n";
+	}
+	keep_window_open();
+	return 0;
+}
+catch (exception& e) {
+	cerr << "error: " << e.what() << '\n';
+	keep_window_open();
+	return 1;
+}
+catch (...) {
+	cerr << "Oops: unknown exception!\n";
+	keep_window_open();
+	return 2;
+}
+
+int Drill7()
+try {
+
+	bool cond = true; //la variable no estaba declarada
+	if (cond) 
+	{
+		cout << "Success!\n";
+	}
+		
+	else
+	{
+		cout << "Fail!\n";
+	}
+	keep_window_open();
+	return 0;
+}
+catch (exception& e) {
+	cerr << "error: " << e.what() << '\n';
+	keep_window_open();
+	return 1;
+}
+catch (...) {
+	cerr << "Oops: unknown exception!\n";
+	keep_window_open();
+	return 2;
+}
+
+int Drill8()
+try {
+
+	bool c = true; // nunca entraria porque estaba en false
+	if (c)
+	{
+		cout << "Success!\n";
+	}
+	else
+	{
+		cout << "Fail!\n";
+	}
+	keep_window_open();
+	return 0;
+}
+catch (exception& e) {
+	cerr << "error: " << e.what() << '\n';
+	keep_window_open();
+	return 1;
+}
+catch (...) {
+	cerr << "Oops: unknown exception!\n";
+	keep_window_open();
+	return 2;
+}
+
+
+int Drill9()
+try {
+
+	string s = "ape"; 
+	bool c = true; // no tenia el tipo de variable correcto 
+	if (c)
+	{
+		cout << "Success!\n";
+	}
+	keep_window_open();
+	return 0;
+}
+catch (exception& e) {
+	cerr << "error: " << e.what() << '\n';
+	keep_window_open();
+	return 1;
+}
+catch (...) {
+	cerr << "Oops: unknown exception!\n";
+	keep_window_open();
+	return 2;
+}
+
+int Drill10()
+try {
+
+	string s = "ape"; 
+	if (s == "ape") // tenia fool en lugar de ape
+	{
+		cout << "Success!\n";
+	}
+	keep_window_open();
+	return 0;
+}
+catch (exception& e) {
+	cerr << "error: " << e.what() << '\n';
+	keep_window_open();
+	return 1;
+}
+catch (...) {
+	cerr << "Oops: unknown exception!\n";
+	keep_window_open();
+	return 2;
+}
+
+
+int Drill11()
+try {
+
+	string s = "ape"; 
+	if (s == "ape") 
+	{ 
+		cout << "Success!\n"; // le faltaba < 
+	}
+	keep_window_open();
+	return 0;
+}
+catch (exception& e) {
+	cerr << "error: " << e.what() << '\n';
+	keep_window_open();
+	return 1;
+}
+catch (...) {
+	cerr << "Oops: unknown exception!\n";
+	keep_window_open();
+	return 2;
+}
+
+int Drill12()
+try {
+
+	string s = "ape"; 
+	if (s == "ape") //tenia un + en lugar de  ==
+	{ 
+		cout << "Success!\n"; //le faltaba < 
+	}
+	keep_window_open();
+	return 0;
+}
+catch (exception& e) {
+	cerr << "error: " << e.what() << '\n';
+	keep_window_open();
+	return 1;
+}
+catch (...) {
+	cerr << "Oops: unknown exception!\n";
+	keep_window_open();
+	return 2;
+}
+
+int Drill13()
+try {
+
+	vector<char> v(5); 
+	for (int i = 0; i < v.size(); ++i)  // tenia 0 en luagar de i y tenia ;
+	{
+		cout << "Success!\n";
+	}
+
+	keep_window_open();
+	return 0;
+}
+catch (exception& e) {
+	cerr << "error: " << e.what() << '\n';
+	keep_window_open();
+	return 1;
+}
+catch (...) {
+	cerr << "Oops: unknown exception!\n";
+	keep_window_open();
+	return 2;
+}
+
+int Drill14()
+try {
+
+	vector<char> v(5); 
+	for (int i = 0; i < v.size(); ++i) //tenia ; y <= lo cual no se puede
+	{
+		cout << "Success!\n";
+	}
+
+	keep_window_open();
+	return 0;
+}
+catch (exception& e) {
+	cerr << "error: " << e.what() << '\n';
+	keep_window_open();
+	return 1;
+}
+catch (...) {
+	cerr << "Oops: unknown exception!\n";
+	keep_window_open();
+	return 2;
+}
+
+int Drill15()
+try {
+
+	string s = "Success!\n"; 
+	for (int i = 0; i < 8; ++i)
+	{
+		cout << s[i];
+	}
+	cout << " " << endl;
+	keep_window_open();
+	return 0;
+}
+catch (exception& e) {
+	cerr << "error: " << e.what() << '\n';
+	keep_window_open();
+	return 1;
+}
+catch (...) {
+	cerr << "Oops: unknown exception!\n";
+	keep_window_open();
+	return 2;
+}
+
+int Drill16() ///////
+try {
+
+	if (true)
+	{
+		cout << "Success!\n";
+	}
+	else
+	{
+		cout << "Fail!\n";
+	}
+	keep_window_open();
+	return 0;
+}
+catch (exception& e) {
+	cerr << "error: " << e.what() << '\n';
+	keep_window_open();
+	return 1;
+}
+catch (...) {
+	cerr << "Oops: unknown exception!\n";
+	keep_window_open();
+	return 2;
+}
+
+int Drill17() 
+try {
+
+	int x = 2000; 
+	int c = x; //tenia char en lugar de int
+	if (c == 2000) 
+	{ 
+		cout << "Success!\n"; 
+	}
+	keep_window_open();
+	return 0;
+}
+catch (exception& e) {
+	cerr << "error: " << e.what() << '\n';
+	keep_window_open();
+	return 1;
+}
+catch (...) {
+	cerr << "Oops: unknown exception!\n";
+	keep_window_open();
+	return 2;
+}
+
+int Drill18()
+try {
+	string s = "Success!\n"; 
+	for (int i = 0; i < 10; ++i)
+	{
+		cout << s[i];
+	}
+	cout << " " << endl;
+	keep_window_open();
+	return 0;
+}
+catch (exception& e) {
+	cerr << "error: " << e.what() << '\n';
+	keep_window_open();
+	return 1;
+}
+catch (...) {
+	cerr << "Oops: unknown exception!\n";
+	keep_window_open();
+	return 2;
+}
+
+
+int Drill19()
+try {
+	vector<int> v(5);  // le falto <>
+	for (int i = 0; i <= v.size(); ++i)
+	{
+		cout << "Success!\n";
+	}
+	keep_window_open();
+	return 0;
+}
+catch (exception& e) {
+	cerr << "error: " << e.what() << '\n';
+	keep_window_open();
+	return 1;
+}
+catch (...) {
+	cerr << "Oops: unknown exception!\n";
+	keep_window_open();
+	return 2;
+}
+
+int Drill20()
+try {
+	int i = 0; 
+	int j = 9; 
+	while (i < 10)
+	{
+		++i; //estaba j en lugar de 1
+	}
+	
+	if (j < i)
+	{
+		cout << "Success!\n";
+	}
+	keep_window_open();
+	return 0;
+}
+catch (exception& e) {
+	cerr << "error: " << e.what() << '\n';
+	keep_window_open();
+	return 1;
+}
+catch (...) {
+	cerr << "Oops: unknown exception!\n";
+	keep_window_open();
+	return 2;
 }
 
 int main()
@@ -696,6 +1128,98 @@ int main()
 	case 16:
 		Ejercicio11();
 		break;
+
+	case 17:
+		Drill1();
+		break;
+
+	case 18:
+		Drill2();
+		break;
+
+	case 19:
+		Drill3();
+		break;
+
+	case 20:
+		Drill4();
+		break;
+
+	case 21:
+		Drill5();
+		break;
+
+	case 22:
+		Drill6();
+		break;
+
+	case 23:
+		Drill7();
+		break;
+
+	case 24:
+		Drill8();
+		break;
+
+	case 25:
+		Drill9();
+		break;
+
+	case 26:
+		Drill10();
+		break;
+
+	case 27:
+		Drill11();
+		break;
+
+	case 28:
+		Drill12();
+		break;
+
+	case 29:
+		Drill13();
+		break;
+
+	case 30:
+		Drill14();
+		break;
+
+	case 31:
+		Drill15();
+		break;
+
+	case 32:
+		Drill16();
+		break;
+
+	case 33:
+		Drill17();
+		break;
+
+	case 34:
+		Drill18();
+		break;
+
+	case 35:
+		Drill19();
+		break;
+
+	case 36:
+		Drill20();
+		break;
+
+	/*case 37:
+		Drill21();
+		break;
+
+	case 38:
+		Drill22();
+		break;
+
+	case 39:
+		Drill23();
+		break;*/
 
 	default:
 		break;
