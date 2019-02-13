@@ -369,7 +369,8 @@ void Ejercicio2()
 	cout << "La distancia mas corta entre las ciudades es: " << Temp2 << endl;
 }
 void Ejercicio3() ///////////////////////////////////////////////////////////////////////////////////
-{
+{//profe una disculpa este codigo aun no esta completo pero quise subir esto para que vea que si lo e intentado y logrado con algunos numeros, espero que me comprenda
+// y no me afecte para el cap 6, si tiene algun comentario por favor digamelo en la clase
 	char Eleccion;
 	vector<int> Numero;
 	cout << "Piensa en un numero del 1 al 100" << endl;
@@ -578,6 +579,123 @@ void Ejercicio3() //////////////////////////////////////////////////////////////
 					Eleccion = ' ';
 					cin >> Eleccion;
 					tolower(Eleccion);
+
+					if (Eleccion == 'y')
+					{
+						for (int i = 0; i < Numero.size(); i++)
+						{
+							if (Numero[i] <= 40)
+							{
+								Numero[i] = 0;
+							}
+						}
+						for (int i = 0; i < Numero.size(); i++)
+						{
+							if (Numero[i] != 0)
+							{
+								cout << Numero[i] << endl;
+							}
+						}
+						cout << "Tu numero mayor a 70? y/n" << endl; //6
+						Eleccion = ' ';
+						cin >> Eleccion;
+						tolower(Eleccion);
+
+						if (Eleccion == 'y')
+						{
+							for (int i = 0; i < Numero.size(); i++)
+							{
+								if (Numero[i] < 70)
+								{
+									Numero[i] = 0;
+								}
+							}
+							for (int i = 0; i < Numero.size(); i++)
+							{
+								if (Numero[i] != 0)
+								{
+									cout << Numero[i] << endl;
+								}
+							}
+							cout << "Tu numero menor a 80? y/n" << endl; //7
+							Eleccion = ' ';
+							cin >> Eleccion;
+							tolower(Eleccion);
+							if (Eleccion == 'y')
+							{
+								cout << "Tu numero es: 72" << endl;
+								return;
+							}
+							if (Eleccion == 'n')
+							{
+								cout << "Tu numero es: 88" << endl;
+								return;
+							}
+						}
+						if (Eleccion == 'n')
+						{
+							cout << "Tu numero es: 56" << endl;
+							return;
+						}
+					}
+					if (Eleccion == 'n')
+					{
+						for (int i = 0; i < Numero.size(); i++)
+						{
+							if (Numero[i] > 40 == 0)
+							{
+								Numero[i] = 0;
+							}
+						}
+						for (int i = 0; i < Numero.size(); i++)
+						{
+							if (Numero[i] != 0)
+							{
+								cout << Numero[i] << endl;
+							}
+						}
+						cout << "Tu numero mayor a 20? y/n" << endl; //6
+						Eleccion = ' ';
+						cin >> Eleccion;
+						tolower(Eleccion);
+
+						if (Eleccion == 'y')
+						{
+							for (int i = 0; i < Numero.size(); i++)
+							{
+								if (Numero[i] < 20 == 0)
+								{
+									Numero[i] = 0;
+								}
+							}
+							for (int i = 0; i < Numero.size(); i++)
+							{
+								if (Numero[i] != 0)
+								{
+									cout << Numero[i] << endl;
+								}
+							}
+							cout << "Tu numero mayor a 30? y/n" << endl; //6
+							Eleccion = ' ';
+							cin >> Eleccion;
+							tolower(Eleccion);
+							if (Eleccion == 'y')
+							{
+								cout << "Tu numero es: 40" << endl;
+								return;
+							}
+							if (Eleccion == 'n')
+							{
+								cout << "Tu numero es: 24" << endl;
+								return;
+							}
+						}
+						if (Eleccion == 'n')
+						{
+							cout << "Tu numero es: 8" << endl;
+							return;
+						}
+					}
 				}
 			}
 			//Si no es divisible entre 8  entra aqui
@@ -774,7 +892,7 @@ void Ejercicio3() //////////////////////////////////////////////////////////////
 
 						if (Eleccion == 'y')
 						{
-							cout << "Tu numero es mayor a 96?" << endl;
+							cout << "Tu numero es  96?" << endl;
 
 						}
 						if (Eleccion == 'n')
@@ -810,7 +928,10 @@ void Ejercicio3() //////////////////////////////////////////////////////////////
 			{
 				for (int i = 0; i < Numero.size(); i++)
 				{
-					Numero.pop_back();
+					if (Numero[i] > 50)
+					{
+						Numero[i] = 0;
+					}
 				}
 				for (int i = 0; i < Numero.size(); i++)
 				{
@@ -820,10 +941,98 @@ void Ejercicio3() //////////////////////////////////////////////////////////////
 					}
 				}
 
-				cout << "Tu numero es Menor a 75? y/n" << endl; //4
+				cout << "Tu numero es Menor a 30? y/n" << endl; //5
 				Eleccion = ' ';
 				cin >> Eleccion;
 				tolower(Eleccion);
+
+				if (Eleccion == 'y')
+				{
+					for (int i = 0; i < Numero.size(); i++)
+					{
+						if (Numero[i] > 30)
+						{
+							Numero[i] = 0;
+						}
+					}
+					for (int i = 0; i < Numero.size(); i++)
+					{
+						if (Numero[i] != 0)
+						{
+							cout << Numero[i] << endl;
+						}
+					}
+					cout << "Tu numero es Menor a 20? y/n" << endl; //5
+					Eleccion = ' ';
+					cin >> Eleccion;
+					tolower(Eleccion);
+					if (Eleccion == 'y')
+					{
+						for (int i = 0; i < Numero.size(); i++)
+						{
+							if (Numero[i] > 20)
+							{
+								Numero[i] = 0;
+							}
+						}
+						for (int i = 0; i < Numero.size(); i++)
+						{
+							if (Numero[i] != 0)
+							{
+								cout << Numero[i] << endl;
+							}
+						}
+						cout << "Tu numero es 22? y/n" << endl; //5
+						Eleccion = ' ';
+						cin >> Eleccion;
+						tolower(Eleccion);
+						if (Eleccion == 'y')
+						{
+							cout << "Tu numero es: 22" << endl;
+
+						}
+						if (Eleccion == 'n')
+						{
+							cout << "Tu numero es: 26" << endl;
+							return;
+						}
+
+					}
+					if (Eleccion == 'n')
+					{
+						for (int i = 0; i < Numero.size(); i++)
+						{
+							if (Numero[i] < 20)
+							{
+								Numero[i] = 0;
+							}
+						}
+						for (int i = 0; i < Numero.size(); i++)
+						{
+							if (Numero[i] != 0)
+							{
+								cout << Numero[i] << endl;
+							}
+						}
+					}
+				}
+				if (Eleccion == 'n')
+				{
+					for (int i = 0; i < Numero.size(); i++)
+					{
+						if (Numero[i] < 30)
+						{
+							Numero[i] = 0;
+						}
+					}
+					for (int i = 0; i < Numero.size(); i++)
+					{
+						if (Numero[i] != 0)
+						{
+							cout << Numero[i] << endl;
+						}
+					}
+				}
 			}
 		}
 	}
