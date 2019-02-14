@@ -1,5 +1,15 @@
 #include "Includes.h"
 
+class Name_Value
+{
+	vector<string>Vec;
+public:
+	string Name;
+	int Score;
+	Name_Value(string ch,int val)
+		:Name(ch), Score(val) { }
+};
+
 class Token {
 public:
 	char kind;        // what kind of token
@@ -53,21 +63,35 @@ Token Token_stream::get()
 
 	char ch;
 	cin >> ch;    // note that >> skips whitespace (space, newline, tab, etc.)
+	tolower(ch);
 
 	switch (ch) {
-	case ';':    // for "print"
-	case 'q':    // for "quit"
-	case '(': case ')': case '+': case '-': case '*': case '/':
+	case '=':    // for "print"
+	case '#':    // for "quit"
+	case '{': case '}': case '(': case ')': case '+': case '-':  case '!': case '*': case '/':
 		return Token(ch);        // let each character represent itself
 	case '.':
 	case '0': case '1': case '2': case '3': case '4':
-	case '5': case '6': case '7': case '9':
+	case '5': case '6': case '7': case '8': case '9':
 	{
 		cin.putback(ch);         // put digit back into the input stream
 		double val;
 		cin >> val;              // read a floating-point number
 		return Token('8', val);   // let '8' represent "a number"
 	}
+	case 'a': case 'b': case 'c': case 'd': case 'e':
+	case 'f': case 'g': case 'h': case 'i': case 'j':
+	case 'k': case 'l': case 'm': case 'ñ': case 'o':
+	case 'p': case 'q': case 'r': case 's': case 't':
+	case 'u': case 'v': case 'w': case 'x': case 'y':
+	case 'z':  
+	{
+		cin.putback(ch);         // put digit back into the input stream
+		int val;
+		cin >> val;              // read a floating-point number
+		return Name_Value(ch, val);   // let '8' represent "a number"
+	}
+	
 	default:
 		error("Bad token");
 	}
@@ -88,6 +112,14 @@ double primary()
 {
 	Token t = ts.get();
 	switch (t.kind) {
+	case '{':    // handle '(' expression ')'
+	{
+		double d = expression();
+		t = ts.get();
+		if (t.kind != '}') error("'}' expected");
+		return d;
+	}
+
 	case '(':    // handle '(' expression ')'
 	{
 		double d = expression();
@@ -107,11 +139,30 @@ double primary()
 // deal with *, /, and %
 double term()
 {
+	
 	double left = primary();
-	Token t = ts.get();        // get the next token from token stream
+	Token t = ts.get();
+	// get the next token from token stream
+	int Temp = left;
+	int Resultado = left;
 
 	while (true) {
 		switch (t.kind) {
+		case '!':
+			if (Resultado == 0)
+			{
+				left = 1;
+				t = ts.get();
+				break;
+			}
+			for (int i = 1; i < Temp; i++)
+			{
+				Resultado = Resultado * (Temp - i);
+				
+			}
+			left = Resultado;
+			t = ts.get();
+			break;
 		case '*':
 			left *= primary();
 			t = ts.get();
@@ -163,13 +214,14 @@ try
 {
 	cout << "Bienvenido a nuestra calculadora simple." << endl;
 	cout << "Por favor ingrese expresiones usando números de punto flotante " << endl;
-	cout << "Cuando quiera terminar pulse 'x', si quiere ver su resultado pulse '='" << endl;
+	cout << "Cuando quiera terminar pulse '#', si quiere ver su resultado pulse '='" << endl;
+	cout << "Puedes usar +, -, *, /, (), {} y !" << endl;
 	double val = 0;
 	
 	while (cin) {
 		Token t = ts.get();
 
-		if (t.kind == 'x') break; // 'q' for quit
+		if (t.kind == '#') break; // 'q' for quit
 		if (t.kind == '=')        // ';' for "print now"
 			cout << "=" << val << '\n';
 		else
