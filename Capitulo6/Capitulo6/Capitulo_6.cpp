@@ -425,6 +425,30 @@ void PoC( int Resultado3)
 	}
 }
 
+void Serie()
+{
+	string Numeros;
+	Vector<string>Valores = { "Enteros","Decenas","Centenas","Millares" };
+	cout << "Ingresa hasta 4 digitos de forma consecutiva" << endl;
+	cin >> Numeros;
+	if (Numeros.size() == 1)
+	{
+		cout << Numeros << " " << Valores[0];
+	}
+	else if (Numeros.size() == 2)
+	{
+		cout << Numeros[1] << " " << Valores[0] << endl;
+		cout << Numeros[0] << " " << Valores[1];
+	}
+	else
+	{
+		for (int i = 0; i < Numeros.size() + 3; i++)
+		{
+			cout << Numeros.back() << " " << Valores[i] << endl;
+			Numeros.pop_back();
+		}
+	}
+}
 
 int main()
 {
@@ -444,6 +468,10 @@ int main()
 
 	case 3:
 		PoC(int(Resultado3));
+		break;
+
+	case 4:
+		Serie();
 		break;
 
 	default:
