@@ -198,7 +198,7 @@ double expression()
 
 //------------------------------------------------------------------------------
 
-int main()
+int Calculadora()
 try
 {
 	string Nombre;
@@ -206,19 +206,19 @@ try
 	char eleccion;
 	vector<Name_Value>Vec;
 	double val = 0;
-	
+
 
 	cout << "Bienvenido a nuestra calculadora simple." << endl;
 	cout << "Por favor ingrese expresiones usando números de punto flotante " << endl;
 	cout << "Cuando quiera terminar pulse '#', si quiere ver su resultado pulse '='" << endl;
 	cout << "Puedes usar +, -, *, /, (), {} y !" << endl;
 	cout << "Si quiere ingresar un nombreo y edad pulse '&' si no es asi pulse cualquier otra tecla" << endl;
-	
+
 	cin >> eleccion;
 
 	if (eleccion == '&')
 	{
-		
+
 		cout << "Ingrse su nombre: "; cin >> Nombre; cout << endl;
 		cout << "Ingrese su edad: "; cin >> Edad; cout << endl;
 		Name_Value(Nombre, Edad);
@@ -229,8 +229,8 @@ try
 		Vec.push_back(Name_Value(Nombre, Edad));
 		return 0;
 	}
-	
-	
+
+
 	while (cin) {
 		Token t = ts.get();
 
@@ -252,4 +252,112 @@ catch (...) {
 	cerr << "Oops: unknown exception!\n";
 	keep_window_open();
 	return 2;
+}
+
+void TyV()
+{
+	int Toros = 0;
+	int Vacas = 0;
+	char Val1;
+	char Val2;
+	char Val3;
+	char Val4;
+	vector<char>Letras = { 'a','b','c','d','e','f','g','h','i','g','k','l','m','n','ñ','o','p','q','r','s','t','u','v','w','x','y','z' };
+	vector <char> Valores;
+	cout << "Vamoa jugar el uego toros y vacas, tienes que adivinar las letras elegidas, ingresa 4 letras si tienes alguno bien te diremos 1 toro" << endl;
+	cout << "si tienes dos letras bien diremos 2 toros y asi sucecivamente hasta que tengas 4 toros, comencemos, las vacas son las letras que tiene incorrectos" << endl;
+
+	srand(time(0));
+	for (int i = 0; i < 4; i++)
+	{
+		Valores.push_back(Letras[rand() % 26]);
+	}
+
+	while (Toros < 4)
+	{
+		Toros = 0;
+		Vacas = 0;
+		cout << "Ingrese su primera letra" << endl;
+		cin >> Val1;
+		cout << "Ingrese su segunda letra" << endl;
+		cin >> Val2;
+		cout << "Ingrese su tercera letra" << endl;
+		cin >> Val3;
+		cout << "Ingrese su cuarta letra" << endl;
+		cin >> Val4;
+
+		if (Val1 == Valores[0])
+		{
+			Toros = Toros + 1;
+		}
+		else
+		{
+			Vacas = Vacas + 1;
+		}
+
+		if (Val2 == Valores[1])
+		{
+			Toros = Toros + 1;
+		}
+		else
+		{
+			Vacas = Vacas + 1;
+		}
+
+		if (Val3 == Valores[2])
+		{
+			Toros = Toros + 1;
+		}
+		else
+		{
+			Vacas = Vacas + 1;
+		}
+
+		if (Val4 == Valores[3])
+		{
+			Toros = Toros + 1;
+		}
+		else
+		{
+			Vacas = Vacas + 1;
+		}
+		cout << "Toros: " << Toros << endl;
+		cout << "Vacas: " << Vacas << endl;
+
+	}
+
+	cout << "Felicidades adivinaste el numero el cual es: " << Val1 << Val2 << Val3 << Val4 << endl;
+
+}
+
+void PoC()
+{
+
+}
+
+
+int main()
+{
+	int Eleccion;
+	cout << "Ingrese el numero del programa que quiera usar" << endl;
+	cin >> Eleccion;
+	switch (Eleccion)
+	{
+	case 1:
+		Calculadora();
+		break;
+
+	case 2:
+		TyV();
+		break;
+
+	case 3:
+		PoC();
+		break;
+
+	default:
+		break;
+	}
+	cin.get();
+	cin.ignore();
 }
