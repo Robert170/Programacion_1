@@ -330,14 +330,105 @@ void TyV()
 
 }
 
-void PoC()
+int Permutaciones(int Val1, int Val2)
 {
+	int Temp = Val1;
+	int Temp2 = Val1 - Val2;
+	int Resultado1 = Val1;
+	int Resultado2 = Val1-Val2;
+	int Resultado3 = 0;
 
+	if (Resultado1 == 0)
+	{
+		Resultado1 = 1;
+		
+	}
+	else
+	{
+		for (int i = 1; i < Temp; i++)
+		{
+			Resultado1 = Resultado1 * (Temp - i);
+
+		}
+	}
+	
+
+	if (Resultado2 == 0)
+	{
+		Resultado2 = 1;
+
+	}
+	else
+	{
+		for (int i = 1; i < Temp2; i++)
+		{
+			Resultado2 = Resultado2 * (Temp2 - i);
+
+		}
+	}
+	
+
+	Resultado3 = Resultado1 / Resultado2;
+
+	return Resultado3;
+
+}
+
+int Combinaciones(int Val1, int Val2, int Resultado3)
+{
+	int Valor2 = Val2;
+	int Temp = Val2;
+	int Resultado = 0;
+	Resultado3= Permutaciones(Val1, Val2);
+
+	if (Valor2 == 0)
+	{
+		Valor2 = 1;
+
+	}
+	else
+	{
+		for (int i = 1; i < Temp; i++)
+		{
+			Valor2 = Valor2 * (Temp - i);
+
+		}
+	}
+	Resultado = Resultado3 / Valor2;
+	cout << "Su resultado es: " << Resultado << endl;
+	return 0;
+}
+
+void PoC( int Resultado3)
+{
+	int Val1 = 0;
+	int Val2 = 0;
+	char Eleccion;
+	cout << "Aqui podra hacer permutaciones o Combinaciones, pero primero ingrese sus dos valores" << endl;
+	cout << "Primer numero: "; cin >> Val1; cout << endl;
+	cout << "Segundo numero: "; cin >> Val2; cout << endl;
+	cout << "Si quiere hacer permutaciones pulse P y para combinaciones C, en caso de no querer ninguna pulse cualquier otra tecla" << endl;
+	cin >> Eleccion;
+	tolower(Eleccion);
+
+	switch (Eleccion)
+	{
+	case 'p':
+		Resultado3=Permutaciones(Val1,Val2);
+		cout << "Su resultado es: " << Resultado3 << endl;
+		break;
+	case 'c':
+		Combinaciones(Val1,Val2, Resultado3);
+		break;
+	default:
+		break;
+	}
 }
 
 
 int main()
 {
+	int Resultado3 = 0;
 	int Eleccion;
 	cout << "Ingrese el numero del programa que quiera usar" << endl;
 	cin >> Eleccion;
@@ -352,7 +443,7 @@ int main()
 		break;
 
 	case 3:
-		PoC();
+		PoC(int(Resultado3));
 		break;
 
 	default:
