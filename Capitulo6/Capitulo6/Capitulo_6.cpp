@@ -2,12 +2,12 @@
 
 class Name_Value
 {
-	vector<string>Vec;
 public:
 	string Name;
-	int Score;
-	Name_Value(string ch,int val)
-		:Name(ch), Score(val) { }
+	int Age;
+	Name_Value(string N, int A)
+		:Name(N), Age(A) { }
+
 };
 
 class Token {
@@ -64,6 +64,7 @@ Token Token_stream::get()
 	char ch;
 	cin >> ch;    // note that >> skips whitespace (space, newline, tab, etc.)
 	tolower(ch);
+	
 
 	switch (ch) {
 	case '=':    // for "print"
@@ -78,18 +79,6 @@ Token Token_stream::get()
 		double val;
 		cin >> val;              // read a floating-point number
 		return Token('8', val);   // let '8' represent "a number"
-	}
-	case 'a': case 'b': case 'c': case 'd': case 'e':
-	case 'f': case 'g': case 'h': case 'i': case 'j':
-	case 'k': case 'l': case 'm': case 'ñ': case 'o':
-	case 'p': case 'q': case 'r': case 's': case 't':
-	case 'u': case 'v': case 'w': case 'x': case 'y':
-	case 'z':  
-	{
-		cin.putback(ch);         // put digit back into the input stream
-		int val;
-		cin >> val;              // read a floating-point number
-		return Name_Value(ch, val);   // let '8' represent "a number"
 	}
 	
 	default:
@@ -212,11 +201,35 @@ double expression()
 int main()
 try
 {
+	string Nombre;
+	int Edad;
+	char eleccion;
+	vector<Name_Value>Vec;
+	double val = 0;
+	
+
 	cout << "Bienvenido a nuestra calculadora simple." << endl;
 	cout << "Por favor ingrese expresiones usando números de punto flotante " << endl;
 	cout << "Cuando quiera terminar pulse '#', si quiere ver su resultado pulse '='" << endl;
 	cout << "Puedes usar +, -, *, /, (), {} y !" << endl;
-	double val = 0;
+	cout << "Si quiere ingresar un nombreo y edad pulse '&' si no es asi pulse cualquier otra tecla" << endl;
+	
+	cin >> eleccion;
+
+	if (eleccion == '&')
+	{
+		
+		cout << "Ingrse su nombre: "; cin >> Nombre; cout << endl;
+		cout << "Ingrese su edad: "; cin >> Edad; cout << endl;
+		Name_Value(Nombre, Edad);
+	}
+
+	if (Vec.size() == 0)
+	{
+		Vec.push_back(Name_Value(Nombre, Edad));
+		return 0;
+	}
+	
 	
 	while (cin) {
 		Token t = ts.get();
