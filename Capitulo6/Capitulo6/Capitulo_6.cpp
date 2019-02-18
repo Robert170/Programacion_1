@@ -222,12 +222,12 @@ try
 		cout << "Ingrse su nombre: "; cin >> Nombre; cout << endl;
 		cout << "Ingrese su edad: "; cin >> Edad; cout << endl;
 		Name_Value(Nombre, Edad);
-	}
 
-	if (Vec.size() == 0)
-	{
-		Vec.push_back(Name_Value(Nombre, Edad));
-		return 0;
+		if (Vec.size() == 0)
+		{
+			Vec.push_back(Name_Value(Nombre, Edad));
+			return 0;
+		}
 	}
 
 
@@ -450,6 +450,42 @@ void Serie()
 	}
 }
 
+int Frase()
+{
+	string Palabra;
+	char Oracion[20];
+	cout << "Ingrese su oracion: "; 
+	cin >> Oracion;
+	gets_s(Oracion);
+	Palabra = Oracion;
+	if (Palabra.back() == '.')
+	{
+		Palabra.pop_back();
+		if (Palabra.back() == ' ')
+		{
+			cout << "Ok";
+			return 0;
+		}
+		else
+		{
+			cout << "Not Ok";
+			return 1;
+		}
+	}
+	else
+	{
+		cout << "Not Ok";
+		return 1;
+	}
+
+	cout << Oracion;
+	
+	
+	cin.get();
+	cin.ignore();
+	
+}
+
 int main()
 {
 	int Resultado3 = 0;
@@ -472,6 +508,10 @@ int main()
 
 	case 4:
 		Serie();
+		break;
+
+	case 5:
+		Frase();
 		break;
 
 	default:
