@@ -514,6 +514,10 @@ int main()
 		Frase();
 		break;
 
+	case 6:
+		Gramar();
+		break;
+
 	default:
 		break;
 	}

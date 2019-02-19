@@ -5,7 +5,7 @@ struct Token {
 	double value;
 	string name;
 	Token(char ch) 
-		:kind(ch), value(0) { }
+		:kind(ch), value(0) { } //constructores de tokens
 	Token(char ch, double val) 
 		:kind(ch), value(val) { }
 	Token(char ch, string nam)
@@ -34,7 +34,7 @@ Token Token_stream::get()
 {
 	if (full) { full = false; return buffer; }
 	char ch;
-	cin >> ch;
+	cin >> ch; //ingresando operacion
 	switch (ch) {
 	case '{':
 	case '}':
@@ -47,6 +47,7 @@ Token Token_stream::get()
 	case '%':
 	case ';':
 	case '=':
+	case 's':
 		return Token(ch);
 	case '.':
 	case '0':
@@ -63,7 +64,19 @@ Token Token_stream::get()
 		cin.unget();
 		double val;
 		cin >> val;
-		return Token(number, val);
+		return Token(number, val); //llamar a la funcion para llenar el token
+	}
+	case 'p':
+	{
+		int Valor = 0;
+		int Pot = 0;
+		int Resultado = 0;
+		cout << "ingrese su valor: "; cin >> Valor;
+		cout << "A que numero quiere elevarlo: "; cin >> Pot;
+
+		Resultado = pow(Valor, Pot);
+		cout << "=" << Resultado << endl;
+		return Resultado;
 	}
 	default:
 		if (isalpha(ch)) {
@@ -134,7 +147,7 @@ Token_stream ts;
 
 double expression();
 
-double primary()
+double primary() //revisa si la operacion tiene parentecis, llaves o es negstivo un numero
 {
 	Token t = ts.get();
 	switch (t.kind)
@@ -145,9 +158,9 @@ double primary()
 			t = ts.get();
 			if (t.kind != '}')
 			{
-				error("'{' expected");
+				error("'}' expected");
 			}
-
+			return d;
 		}
 		case '(':
 		{	
@@ -155,33 +168,52 @@ double primary()
 			t = ts.get();
 			if (t.kind != ')')
 			{
-				error("'(' expected");
+				error("')' expected");
 			}
+			return d;
 		}
+		case 's':
+		{
+			double d = primary();
+			if (d = -primary())
+			{
+				error("'-' negated");;
+			}
+			return sqrt(d);
+			
+		}
+
 		case '-':
 			return -primary();
+
 		case number:
 			return t.value;
+
 		case name:
 			return get_value(t.name);
+
 		default:
 			error("primary expected");
 	}
 }
 
-double term()
+double term() //operaciones de multiplicacion y division
 {
 	double left = primary();
 	while (true) {
 		Token t = ts.get();
 		switch (t.kind) {
+			
 		case '*':
 			left *= primary();
 			break;
 		case '/':
 		{	
 			double d = primary();
-			if (d == 0) error("divide by zero");
+			if (d == 0)
+			{
+				error("divide by zero");
+			}
 			left /= d;
 			break;
 		}
@@ -192,7 +224,7 @@ double term()
 	}
 }
 
-double expression()
+double expression() //operacion de suma y resta
 {
 	double left = term();
 	while (true) {
@@ -249,7 +281,7 @@ void calculate()
 {
 	while (true) try {
 		cout << prompt;
-		Token t = ts.get();
+		Token t = ts.get(); 
 		while (t.kind == print) t = ts.get();
 		if (t.kind == quit) return;
 		ts.unget(t);
@@ -261,10 +293,17 @@ void calculate()
 	}
 }
 
-int main()
+
+int main() // iniciamos el programa
 
 try {
-	calculate();
+
+	cout << "Bienvenido a nuestra calculadora simple." << endl;
+	cout << "Por favor ingrese expresiones usando números de punto flotante " << endl;
+	cout << "Cuando quiera terminar pulse 'q', si quiere ver su resultado pulse ';'" << endl;
+	cout << "Puedes usar +, -, *, /, (), {} y !" << endl;
+	cout << "Para usar raiz cuadrada pulse 's' y para usar exponente pulse p" << endl;
+	calculate(); //llamar a la funcion calculate
 	return 0;
 }
 catch (exception& e) {
