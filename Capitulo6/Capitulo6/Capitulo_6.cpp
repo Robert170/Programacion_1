@@ -221,7 +221,7 @@ try
 
 		cout << "Ingrse su nombre: "; cin >> Nombre; cout << endl;
 		cout << "Ingrese su edad: "; cin >> Edad; cout << endl;
-		Name_Value(Nombre, Edad);
+		
 
 		if (Vec.size() == 0)
 		{
@@ -514,10 +514,7 @@ int main()
 		Frase();
 		break;
 
-	case 6:
-		Gramar();
-		break;
-
+	
 	default:
 		break;
 	}

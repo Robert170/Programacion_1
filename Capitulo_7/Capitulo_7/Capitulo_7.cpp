@@ -12,6 +12,11 @@ struct Token {
 		:kind(ch), name(nam) { }
 };
 
+//class Symbol_table
+//{
+//	vector<Variable> m_var_table;
+//};
+
 class Token_stream {
 	bool full;
 	Token buffer;
@@ -48,6 +53,7 @@ Token Token_stream::get()
 	case ';':
 	case '=':
 	case 's':
+	case 'p':
 		return Token(ch);
 	case '.':
 	case '0':
@@ -66,18 +72,6 @@ Token Token_stream::get()
 		cin >> val;
 		return Token(number, val); //llamar a la funcion para llenar el token
 	}
-	case 'p':
-	{
-		int Valor = 0;
-		int Pot = 0;
-		int Resultado = 0;
-		cout << "ingrese su valor: "; cin >> Valor;
-		cout << "A que numero quiere elevarlo: "; cin >> Pot;
-
-		Resultado = pow(Valor, Pot);
-		cout << "=" << Resultado << endl;
-		return Resultado;
-	}
 	default:
 		if (isalpha(ch)) {
 			string s;
@@ -90,7 +84,7 @@ Token Token_stream::get()
 			}
 			if (s == "quit")
 			{
-				return Token(name);
+				return Token(quit);
 			}
 			return Token(name, s);
 		}
@@ -174,14 +168,31 @@ double primary() //revisa si la operacion tiene parentecis, llaves o es negstivo
 		}
 		case 's':
 		{
-			double d = primary();
-			if (d = -primary())
+			double d = expression();
+			if (d<0)
 			{
-				error("'-' negated");;
+				error("Not negative");
 			}
-			return sqrt(d);
+			d = sqrt(d);
+			return d;
 			
 		}
+
+		case 'p':
+		{
+			double d = expression();
+			double val1 = 0;
+
+			cout << "Ingrese la potencia: ";
+			cin >> val1;
+
+			d = pow(d, val1);
+
+			return d;
+
+		}
+
+
 
 		case '-':
 			return -primary();
