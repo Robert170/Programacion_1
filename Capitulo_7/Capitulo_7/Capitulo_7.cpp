@@ -1,21 +1,21 @@
 #include "Includes.h"
 
+//sugerencia 1 que se pueda usar el simbolo + al principio de los numeros , implementado
+//sugerencia 2 guardar el resultado para usarlo depues
+//sugerencia 3 que no sea necesario pedir ayua y te la den desde un pricipio
+
 struct Token {
 	char kind;
-	double value;
+	int value;
 	string name;
 	Token(char ch) 
 		:kind(ch), value(0) { } //constructores de tokens
-	Token(char ch, double val) 
+	Token(char ch, int val) 
 		:kind(ch), value(val) { }
 	Token(char ch, string nam)
 		:kind(ch), name(nam) { }
 };
 
-//class Symbol_table
-//{
-//	vector<Variable> m_var_table;
-//};
 
 class Token_stream {
 	bool full;
@@ -30,16 +30,22 @@ public:
 };
 
 const char let = 'L';
-const char quit = 'Q';
+const char quit = 'q';
 const char print = ';';
 const char number = '8';
 const char name = 'a';
+int x = 10;
 
 Token Token_stream::get()
 {
+	
 	if (full) { full = false; return buffer; }
 	char ch;
 	cin >> ch; //ingresando operacion
+	if (isspace(ch))
+	{
+		return Token(print);
+	}
 	switch (ch) {
 	case '{':
 	case '}':
@@ -72,19 +78,37 @@ Token Token_stream::get()
 		cin >> val;
 		return Token(number, val); //llamar a la funcion para llenar el token
 	}
+	case 'x':
+	{	
+		double val;
+		val = x;
+		return Token(number, val); //llamar a la funcion para llenar el token
+	}
 	default:
 		if (isalpha(ch)) {
 			string s;
 			s += ch;
-			while (cin.get(ch) && (isalpha(ch) || isdigit(ch))) s = ch;
+			while (cin.get(ch) && (isalpha(ch) || isdigit(ch))) s += ch;
 			cin.unget();
-			if (s == "let")
+			if (s == "L")
 			{
 				return Token(let);
 			}
-			if (s == "quit")
+			if (s == "q")
 			{
 				return Token(quit);
+			}
+			if (s == "h")
+			{
+				cout << "Ingrese la operacion que quiera hacer" << endl;
+				cout << "Pulse ; para dar resultado y q para cerrar el programa" << endl;
+				return Token('h');
+			}
+			if (s == "H")
+			{
+				cout << "Ingrese la operacion que quiera hacer" << endl;
+				cout << "Pulse ; para dar resultado y q para cerrar el programa" << endl;
+				return Token('H');
 			}
 			return Token(name, s);
 		}
@@ -107,20 +131,20 @@ void Token_stream::ignore(char c)
 
 struct Variable {
 	string name;
-	double value;
-	Variable(string n, double v) :name(n), value(v) { }
+	int value;
+	Variable(string n, int v) :name(n), value(v) { }
 };
 
 vector<Variable> names;
 
-double get_value(string s)
+int get_value(string s)
 {
 	for (int i = 0; i < names.size(); ++i)
 		if (names[i].name == s) return names[i].value;
 	error("get: undefined name ", s);
 }
 
-void set_value(string s, double d)
+void set_value(string s, int d)
 {
 	for (int i = 0; i <= names.size(); ++i)
 		if (names[i].name == s) {
@@ -130,7 +154,7 @@ void set_value(string s, double d)
 	error("set: undefined name ", s);
 }
 
-bool is_declared(string s)
+int is_declared(string s)
 {
 	for (int i = 0; i < names.size(); ++i)
 		if (names[i].name == s) return true;
@@ -139,16 +163,16 @@ bool is_declared(string s)
 
 Token_stream ts;
 
-double expression();
+int expression();
 
-double primary() //revisa si la operacion tiene parentecis, llaves o es negstivo un numero
+int primary() //revisa si la operacion tiene parentecis, llaves o es negstivo un numero
 {
 	Token t = ts.get();
 	switch (t.kind)
 	{
 		case '{':
 		{	
-			double d = expression();
+			int d = expression();
 			t = ts.get();
 			if (t.kind != '}')
 			{
@@ -158,7 +182,7 @@ double primary() //revisa si la operacion tiene parentecis, llaves o es negstivo
 		}
 		case '(':
 		{	
-			double d = expression();
+			int d = expression();
 			t = ts.get();
 			if (t.kind != ')')
 			{
@@ -168,7 +192,7 @@ double primary() //revisa si la operacion tiene parentecis, llaves o es negstivo
 		}
 		case 's':
 		{
-			double d = expression();
+			int d = expression();
 			if (d<0)
 			{
 				error("Not negative");
@@ -180,8 +204,8 @@ double primary() //revisa si la operacion tiene parentecis, llaves o es negstivo
 
 		case 'p':
 		{
-			double d = expression();
-			double val1 = 0;
+			int d = expression();
+			int val1 = 0;
 
 			cout << "Ingrese la potencia: ";
 			cin >> val1;
@@ -196,6 +220,8 @@ double primary() //revisa si la operacion tiene parentecis, llaves o es negstivo
 
 		case '-':
 			return -primary();
+		case '+':
+			return primary();
 
 		case number:
 			return t.value;
@@ -208,19 +234,23 @@ double primary() //revisa si la operacion tiene parentecis, llaves o es negstivo
 	}
 }
 
-double term() //operaciones de multiplicacion y division
+int term() //operaciones de multiplicacion y division
 {
-	double left = primary();
+	int left = primary();
 	while (true) {
 		Token t = ts.get();
 		switch (t.kind) {
-			
+
+		case '=':
+			x = primary();
+			break;
+
 		case '*':
 			left *= primary();
 			break;
 		case '/':
 		{	
-			double d = primary();
+			int d = primary();
 			if (d == 0)
 			{
 				error("divide by zero");
@@ -235,9 +265,9 @@ double term() //operaciones de multiplicacion y division
 	}
 }
 
-double expression() //operacion de suma y resta
+int expression() //operacion de suma y resta
 {
-	double left = term();
+	int left = term();
 	while (true) {
 		Token t = ts.get();
 		switch (t.kind) {
@@ -254,7 +284,7 @@ double expression() //operacion de suma y resta
 	}
 }
 
-double declaration()
+int declaration()
 {
 	Token t = ts.get();
 	if (t.kind != 'a') error("name expected in declaration");
@@ -262,12 +292,12 @@ double declaration()
 	if (is_declared(name)) error(name, " declared twice");
 	Token t2 = ts.get();
 	if (t2.kind != '=') error("= missing in declaration of ", name);
-	double d = expression();
+	int d = expression();
 	names.push_back(Variable(name, d));
 	return d;
 }
 
-double statement()
+int statement()
 {
 	Token t = ts.get();
 	switch (t.kind) {
@@ -287,14 +317,21 @@ void clean_up_mess()
 const string prompt = "> ";
 const string result = "= ";
 const int k = 1000;
+const int pi = 3.14;
 
 void calculate()
 {
 	while (true) try {
 		cout << prompt;
 		Token t = ts.get(); 
-		while (t.kind == print) t = ts.get();
-		if (t.kind == quit) return;
+		while (t.kind == print)
+		{
+			t = ts.get();
+		}
+		if (t.kind == quit)
+		{
+			return;
+		}
 		ts.unget(t);
 		cout << result << statement() << endl;
 	}
