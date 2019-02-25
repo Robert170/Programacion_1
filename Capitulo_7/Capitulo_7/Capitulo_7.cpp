@@ -42,10 +42,7 @@ Token Token_stream::get()
 	if (full) { full = false; return buffer; }
 	char ch;
 	cin >> ch; //ingresando operacion
-	if (isspace(ch))
-	{
-		return Token(print);
-	}
+
 	switch (ch) {
 	case '{':
 	case '}':
