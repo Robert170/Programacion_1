@@ -667,8 +667,87 @@ void Varios()
 
 }
 
+void print_until_s(vector<string> v, string quit)
+{
+	for (string s : v) {
+		if (s == quit)
+		{
+			return;
+		}
+		cout << s << '\n';
+	}
+}
+
+void print_until_ss(vector<string> v, string quit)
+{
+	int Contador = 0;
+	for (string s : v) {
+		if (s == quit)
+		{
+			Contador = Contador + 1;
+			if (Contador == 2)
+			{
+				return;
+			}
+		}
+		cout << s << '\n';
+	}
+}
+
+void Vec(vector<string> v)
+{
+	vector<int>Num;
+	string Palabra;
+	int Tamaño;
+	int Grande;
+	string Cadena;
+	for (int i = 0; i < v.size(); i++)
+	{
+		Palabra = v[i];
+		Tamaño = Palabra.size();
+		Num.push_back(Tamaño);
+	}
+	for (int i = 0; i < v.size(); i++)
+	{
+		cout << v[i] << " ";
+	}
+	cout << endl;
+	for (int i = 0; i < Num.size(); i++)
+	{
+		cout << Num[i] << " ";
+	}
+
+	for (int i = 0; i < Num.size() - 1; i++)
+	{
+		if (i == 0)
+		{
+			Grande = Num[i];
+			Cadena = v[i];
+		}
+
+		if (Num[i + 1] > Grande)
+		{
+			Grande = Num[i + 1];
+			Cadena = v[i + 1];
+		}
+	}
+	cout << endl;
+	cout << "La palabra mas grnade es: " << Cadena << endl;
+	cout << "Con una longitud de: " << Grande << " caracteres." << endl;
+}
+
+const int x = 10;
+
+void f(const int g)
+{
+	int H = g;
+	cout << H;
+}
+
 int main()
 {
+	vector<string>name = { "Juan","Ana","Pepe","Rulo","Estefania","Jose","Chuy","Rex","Mary","luis","Estefania" };
+	string h = "Estefania";
 	int Eleccion;
 	cout << "Elige el numero del programa que quieras ver" << endl;
 	cin >> Eleccion;
@@ -705,6 +784,18 @@ int main()
 		break;
 	case 10:
 		Varios();
+		break;
+	case 11:
+		print_until_s(name, h);
+		break;
+	case 12:
+		print_until_ss(name, h);
+		break;
+	case 13:
+		Vec(name);
+		break;
+	case 14:
+		f(x);
 		break;
 	default:
 		break;
