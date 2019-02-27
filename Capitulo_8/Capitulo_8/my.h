@@ -1,7 +1,7 @@
-//#pragma once
-//
-//extern int foo;
-//
-//int print_foo();
-//
-//int print(int);
+#pragma once
+
+extern int foo;
+
+void print_foo();
+
+void print(int i);
