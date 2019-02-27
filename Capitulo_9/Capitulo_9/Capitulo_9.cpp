@@ -1,8 +1,14 @@
-#include <iostream>
-using namespace std;
-#include <vector>
-#include <sstream>
 
+#include "Includes.h"
+
+class Name_pairs
+{
+public:
+	string Name;
+	int Age;
+	Name_pairs(string N)
+		:Name(N) { }
+};
 
 int add_day(int D)
 {	
@@ -40,8 +46,59 @@ void Fecha()
 
 }
 
+void NyA()
+{
+//	vector<string>Nombre;
+//	vector<double>Edad;
+//	string Persona;
+//	
+//	cout << "Escriba el nombre de las personas, cuando quiera para pulse'!':" << endl;
+//	for (int i = 0; cin >> Persona;)
+//
+//	{
+//		if (Persona == "!")
+//		{
+//			break;
+//		}
+//		else
+//		{
+//			Nombre.push_back(Name_pairs(Persona));
+//		}
+//
+//	}
+//	cout << "Escriba la edad de las personas " << endl;
+//
+//	for (int i = 0; i < Nombre.size(); i++)
+//	{
+//		cout << Nombre[i] << ":";
+//		cin >> Edad;
+//		Edad.push_back(Edad);
+//	}
+//	sort(name.begin(), name.end());
+}
+
+struct X {
+	void f(int x) {
+		struct Y {
+			int f() { return 1; } int m;
+		};
+		int m;
+		m = x; Y m2;
+		
+			return f(m2.f());
+	}
+	int m; void g(int m) {
+		if (m) f(m + 2); else {
+			g(m + 2);
+		}
+	}
+	X() { } void m3() {
+	}
+};
+
 int main()
 {
+	int a = 0;
 	int Eleccion;
 	cout << "Elige el numero del programa que quieras ver" << endl;
 	cin >> Eleccion;
@@ -50,7 +107,11 @@ int main()
 	case 1:
 		Fecha();
 		break;
-	default:
+	case 2:
+		NyA();
+		break;
+	case 3:
+		X a; a.f(2);
 		break;
 	}
 	cin.ignore();
