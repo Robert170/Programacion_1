@@ -1,7 +1,21 @@
 #include "my.h"
 #include <iostream>
+using namespace std;
 
+//profe va a ver un problema por tener dos mains para que funcione ponga todo un codigo en comentarios y luego el otro
+//perdon las molestias
 
+int foo;
+int Drill()
+{
+
+	foo = 7;
+	print_foo();
+	int i = 99;
+	print(i);
+	std::cin.get();
+	return 0;
+}
 
 int swap(int a, int b)
 {
@@ -12,9 +26,6 @@ int swap(int a, int b)
 	return b, a;
 }
 
-
-
-
 int swap_r(int&a, int&b)
 {
 	int temp; temp = a; 
@@ -23,14 +34,14 @@ int swap_r(int&a, int&b)
 	return a, b;
 }
 
-
-int Drill()
+int Drill2()
 {
 	int a = 7;
 	int b = 6;
 	swap(a, b);
-	std::cout << b << a;
-	std::cin.get();
+	cout << b << endl;
+	cout << a << endl;
+	cin.get();
 	return 5;
 }
 
@@ -40,15 +51,16 @@ namespace X
 
 	void print()
 	{
-		std::cout << var;
+		cout << var << endl;
 	}
+
 }
 namespace Y
 {
 	int var;
 	void print()
 	{
-		std::cout << var;
+		cout << var << endl;
 	}
 
 }
@@ -57,12 +69,12 @@ namespace Z
 	int var;
 	void print()
 	{
-		std::cout << var;
+		cout << var << endl;
 	}
 
 }
 
-int Drill2()
+int main()
 {
 	X::var = 7;
 	X::print();
@@ -74,24 +86,14 @@ int Drill2()
 
 		var = 11;
 		Z::print();
-
 	}
 
-	std::cin.get();
+	cin.get();
 	print();
 	X::print();
+	Drill();
+	Drill2();
 	return 0;
 }
 
-int foo;
-int main()
-{
-	
-	foo = 7;
-	print_foo();
-	int i = 99;
-	print(i);
-	std::cin.get();
-	return 0;
-}
 
