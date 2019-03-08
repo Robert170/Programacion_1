@@ -800,6 +800,7 @@ int main()
 	default:
 		break;
 	}
+
 	cin.ignore();
 	cin.get();
 }
