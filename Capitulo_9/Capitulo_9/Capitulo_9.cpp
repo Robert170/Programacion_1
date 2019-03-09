@@ -1,6 +1,242 @@
 
 #include "Includes.h"
 
+class Dinero
+{
+public:
+	double Dolar;
+	double Cantidad;
+	double Decimal;
+	int D;
+	Dinero();
+	void Suma();
+	void Resta();
+	void Divicion();
+	void Multiplicacion();
+	void IngresaDinero();
+	~Dinero();
+};
+
+Dinero::Dinero()
+{
+}
+
+void Dinero::Suma()
+{
+	cout << "Porque cantidad lo vas a sumar?" << endl;
+	cin >> Cantidad;
+	Dolar = Dolar + Cantidad;
+	D = Dolar;
+	Decimal = Dolar - D;
+	if (D == 0)
+	{
+		cout << "Su resultado es: " << Dolar;
+	}
+	else
+	{
+		if (Decimal > 0.5)
+		{
+			Dolar = Dolar + (1 - Decimal);
+		}
+		if (Decimal < 0.5)
+		{
+			Dolar = Dolar - Decimal;
+		}
+		cout << "Su resultado es: " << Dolar;
+	}
+	
+}
+
+void Dinero::Resta()
+{
+	cout << "Porque cantidad lo vas a restar?" << endl;
+	cin >> Cantidad;
+	Dolar = Dolar - Cantidad;
+	D = Dolar;
+	Decimal = Dolar - D;
+	if (D == 0)
+	{
+		cout << "Su resultado es: " << Dolar;
+	}
+	else
+	{
+		if (Decimal > 0.5)
+		{
+			Dolar = Dolar + (1 - Decimal);
+		}
+		if (Decimal < 0.5)
+		{
+			Dolar = Dolar - Decimal;
+		}
+		cout << "Su resultado es: " << Dolar;
+	}
+}
+
+void Dinero::Divicion()
+{
+	cout << "Porque cantidad lo vas a dividir?" << endl;
+	cin >> Cantidad;
+	Dolar = Dolar / Cantidad;
+	D = Dolar;
+	Decimal = Dolar - D;
+	if (D == 0)
+	{
+		cout << "Su resultado es: " << Dolar;
+	}
+	else
+	{
+		if (Decimal > 0.5)
+		{
+			Dolar = Dolar + (1 - Decimal);
+		}
+		if (Decimal < 0.5)
+		{
+			Dolar = Dolar - Decimal;
+		}
+		cout << "Su resultado es: " << Dolar;
+	}
+}
+
+void Dinero::Multiplicacion()
+{
+	cout << "Porque cantidad lo vas a multiplicar?" << endl;
+	cin >> Cantidad;
+	Dolar = Dolar * Cantidad;
+	D = Dolar;
+	Decimal = Dolar - D;
+	if (D == 0)
+	{
+		cout << "Su resultado es: " << Dolar;
+	}
+	else
+	{
+		if (Decimal > 0.5)
+		{
+			Dolar = Dolar + (1 - Decimal);
+		}
+		if (Decimal < 0.5)
+		{
+			Dolar = Dolar - Decimal;
+		}
+		cout << "Su resultado es: " << Dolar;
+	}
+}
+
+void Dinero::IngresaDinero()
+{
+	char Eleccion;
+	cout << "Cuantos dolares tienes? "; cin >> Dolar;
+	cout << "Que quiere hacer con ellos? +, -, /, *" << endl;
+	cin >> Eleccion;
+	switch (Eleccion)
+	{
+	case '+':
+		Suma();
+		break;
+	case '-':
+		Resta();
+		break;
+	case '/':
+		Divicion();
+		break;
+	case '*':
+		Multiplicacion();
+		break;
+	default:
+		break;
+	}
+}
+
+Dinero::~Dinero()
+{
+}
+
+class Racional
+{
+public:
+	int Numerador;
+	int Denominador;
+	double Decimal;
+	void Numeros();
+	void Transformar();
+	Racional();
+	~Racional();
+
+private:
+
+};
+
+void Racional::Numeros()
+{
+	char Respuesta;
+	cout << "Ingrese su numerador" << endl;
+	cin >> Numerador;
+	cout << "Ingrese su denominaodr" << endl;
+	cin >> Denominador;
+	cout << "Su resultado: " << Numerador << " / " << Denominador << endl;
+	cout << "Quire transformarlo a decimal?" << endl;
+	cin >> Respuesta;
+	if (Respuesta == 'y')
+	{
+		Transformar();
+	}
+}
+
+void Racional::Transformar()
+{
+	Decimal = Numerador / Denominador;
+	cout << "Tu racional convertido a decimal es: " << Decimal << endl;
+}
+
+Racional::Racional()
+{
+}
+
+Racional::~Racional()
+{
+}
+
+class Date
+{
+public:
+	
+	int Dia=1;
+	int Semana=0;
+	void next_workday();
+	int week_of_year();
+};
+
+void Date::next_workday()
+{
+	int Limite;
+	int Contador = 0;
+	cout << "Escribe un numero de semanas y te dire cuantos dias laborales hay en total" << endl;
+	cin >> Limite;
+	while (Semana<Limite)
+	{
+		Semana=week_of_year();
+		for (int i = 0; i < 7; i++)
+		{
+			if (Dia == 1 || Dia == 2)
+			{
+				Dia = Dia + 1;
+				continue;
+			}
+			Dia = Dia + 1;
+			Contador = Contador + 1;
+		}
+		Dia = 0;
+	}
+	cout << "En " << Limite << " semanas hay: " << Contador << " dias libres" << endl;
+}
+
+int Date::week_of_year()
+{
+	Semana = Semana + 1;
+	return Semana;
+}
+
+
 class Biblioteca
 {
 public:
@@ -235,8 +471,6 @@ public:
 	void Datos();
 	void Ingresar();
 	~Usuario();
-
-private:
 
 };
 
@@ -745,11 +979,15 @@ void Us()
 
 int main()
 {
+	Dinero H;
+	Racional G;
+	Date F;
 	Biblioteca E;
 	Libro C;
 	Libro D;
 	Name_pairs A;
 	Name_pairs B;
+	
 	int a = 0;
 	int Eleccion;
 	cout << "Elige el numero del programa que quieras ver" << endl;
@@ -770,6 +1008,12 @@ int main()
 		break;
 	case 5:
 		E.IngresarP();
+		break;
+	case 6:
+		F.next_workday();
+		break;
+	case 7:
+		H.IngresaDinero();
 		break;
 	case 3:
 		X a; a.f(2);
