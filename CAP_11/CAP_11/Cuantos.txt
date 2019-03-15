@@ -1,0 +1,8 @@
+Hay 8 espacios en el archivo que reviso.
+Hay 4 digitos en el archivo que reviso.
+Hay 36 letras en el archivo que reviso.
+Hay 14 hexadecimal digitos en el archivo que reviso.
+Hay 8 letras mayusculas en el archivo que reviso.
+Hay 28 letras minusculas en el archivo que reviso.
+Hay 40 letter or a decimal digit? en el archivo que reviso.
+Hay 0 control character en el archivo que reviso.

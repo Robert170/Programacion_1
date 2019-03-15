@@ -1,0 +1,53 @@
+H is alpha H is upper H is alnum 
+o is alpha o is lower o is alnum 
+l is alpha l is lower l is alnum 
+A is alpha A is xdigit A is upper A is alnum 
+
+C is alpha C is xdigit C is upper C is alnum 
+O is alpha O is upper O is alnum 
+M is alpha M is upper M is alnum 
+o is alpha o is lower o is alnum 
+
+e is alpha e is xdigit e is lower e is alnum 
+s is alpha s is lower s is alnum 
+t is alpha t is lower t is alnum 
+a is alpha a is xdigit a is lower a is alnum 
+s is alpha s is lower s is alnum 
+S is alpha S is upper S is alnum 
+R is alpha R is upper R is alnum 
+r is alpha r is lower r is alnum 
+4 is digit 4 is xdigit 4 is alnum 
+3 is digit 3 is xdigit 3 is alnum 
+S is alpha S is upper S is alnum 
+
+5 is digit 5 is xdigit 5 is alnum 
+4 is digit 4 is xdigit 4 is alnum 
+y is alpha y is lower y is alnum 
+
+
+
+d is alpha d is xdigit d is lower d is alnum 
+o is alpha o is lower o is alnum 
+n is alpha n is lower n is alnum 
+
+t is alpha t is lower t is alnum 
+
+u is alpha u is lower u is alnum 
+s is alpha s is lower s is alnum 
+e is alpha e is xdigit e is lower e is alnum 
+
+t is alpha t is lower t is alnum 
+h is alpha h is lower h is alnum 
+e is alpha e is xdigit e is lower e is alnum 
+
+a is alpha a is xdigit a is lower a is alnum 
+s is alpha s is lower s is alnum 
+
+i is alpha i is lower i is alnum 
+f is alpha f is xdigit f is lower f is alnum 
+
+r is alpha r is lower r is alnum 
+u is alpha u is lower u is alnum 
+l is alpha l is lower l is alnum 
+e is alpha e is xdigit e is lower e is alnum 
+

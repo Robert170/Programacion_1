@@ -1,0 +1,3 @@
+67 hexadecimal converts to 67
+1245 Decimal converts to 1245
+83 octal converts to 83
