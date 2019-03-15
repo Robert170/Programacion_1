@@ -771,7 +771,63 @@ void Ejercicio15()
 
 void Ejercicio16()
 {
+	fstream Archivo;
+	fstream A;
+	string Nombre;
+	string Linea;
+	int Contador = 0;
+	int Contador2 = 0;
+	vector<char>Vec;
+	cout << "Ingresa el nombre de tu archivo" << endl;
+	cin >> Nombre;
+	Archivo.open(Nombre + ".txt", ios::in); //abrir el archivo en modo lectura
+	if (!Archivo) // Revisar si el archivo existe
+	{
+		cout << "Archivo no encontrado, adios" << endl;
+		return;
+	}
+	A.open("NumCuan.txt", ios::out);
+	while (!Archivo.eof()) //mientras no acabe de leer
+	{
+		getline(Archivo, Linea);
+		for (int i = 0; i < Linea.size(); i++)
+		{
+			if (isdigit(Linea[i]))
+			{
+				for (int j = 0; j < Linea.size(); j++)
+				{
+					if (Linea[i] == Linea[j])
+					{
+						Contador = Contador + 1;
+					}
 
+				}
+			}
+			
+			if (isdigit(Linea[i]))
+			{
+				Vec.push_back(Linea[i]);
+				Contador2 = 1;
+			}
+			for (int j = 0; j < Linea.size(); j++)
+			{
+				if (isdigit(Linea[j]))
+				{
+					if (Linea[i] != Linea[j])
+					{
+						Contador2 = Contador2 + 1;
+					}
+				}
+				if (isdigit(Linea[i]) && Contador2==Vec.size())
+				{
+					A << Linea[i] << " " << Contador << endl;
+				}
+			}
+			Contador = 0;
+		}
+	}
+	A.close();
+	Archivo.close();
 }
 
 
@@ -840,6 +896,9 @@ int main()
 		break;
 	case 20:
 		Ejercicio15();
+		break;
+	case 21:
+		Ejercicio16();
 		break;
 	default:
 		break;
