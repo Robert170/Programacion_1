@@ -261,13 +261,14 @@ void Editar::Continuar(string N)
 	cout << "Escribe lo que quieras agragar al archivo, cuando quieras parar ingresa '&'" << endl;
 	cout << "--------------------------------" << endl;
 	Archivo->open(m_Nombre + ".txt", ios::app);
-	
+	m_Contador = 1;
 	while (m_Texto != "&")
 	{
 		getline(cin, m_Texto);
 		cin.sync();
-		if (m_Texto == "" || m_Texto == "&")
+		if (m_Contador==1 || m_Texto == "&")
 		{
+			m_Contador++;
 			continue;
 		}
 		else
