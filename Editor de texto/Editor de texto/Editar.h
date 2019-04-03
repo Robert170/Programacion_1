@@ -17,6 +17,7 @@ namespace Nu
 	class Editar
 	{
 	public:
+		bool m_TxT;
 		char m_Eleccion;
 		string m_Nombre;
 		string m_Texto;
@@ -29,7 +30,7 @@ namespace Nu
 		int Menu();
 		void Nuevo();
 		void Continuar();
-		void Continuar(string N);
+		void Continuar(string N,bool T);
 	
 
 		Editar& operator <<(Editar N);

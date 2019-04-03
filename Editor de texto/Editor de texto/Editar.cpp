@@ -38,11 +38,27 @@ int Editar::Menu()
 
 void Editar::Nuevo()
 {
+	m_TxT = false;
 	fstream*Archivo = new fstream;
 	m_Eleccion = 'l';
 	cout << "Escriba el nombre del archivo que quiera crear" << endl;
 	cin >> m_Nombre;
-	Archivo->open(m_Nombre + ".txt", ios::in);
+	for (int i = 0; i < m_Nombre.size(); i++)
+	{
+		if (m_Nombre[i] =='.')
+		{
+			if (m_Nombre.substr(i) == ".txt")
+			{
+				Archivo->open(m_Nombre, ios::in);
+				m_TxT = true;
+				break;
+			}
+		}
+	}
+	if (m_TxT == false)
+	{
+		Archivo->open(m_Nombre + ".txt", ios::in);
+	}
 	if (*Archivo)
 	{
 		cout << "El Archivo seleccionado ya existe" << endl;
@@ -80,7 +96,7 @@ void Editar::Nuevo()
 		{
 		case '1':
 			system("cls");
-			Continuar(m_Nombre);
+			Continuar(m_Nombre, m_TxT);
 			break;
 		case '2':
 			system("cls");
@@ -97,7 +113,14 @@ void Editar::Nuevo()
 	if(m_Eleccion=='l')
 	{
 		Archivo->close();
-		Archivo->open(m_Nombre + ".txt", ios::out);
+		if (m_TxT == false)
+		{
+			Archivo->open(m_Nombre + ".txt", ios::out);
+		}
+		if (m_TxT == true)
+		{
+			Archivo->open(m_Nombre, ios::out);
+		}
 		Archivo->close();
 		delete Archivo;
 		cout << "Quiere editar el archivo que creo?(1)" << endl;
@@ -108,7 +131,7 @@ void Editar::Nuevo()
 		{
 		case '1':
 			system("cls");
-			Continuar(m_Nombre);
+			Continuar(m_Nombre,m_TxT);
 			break;
 		case '2':
 			system("cls");
@@ -126,11 +149,27 @@ void Editar::Nuevo()
 
 void Editar::Continuar()
 {
+	m_TxT = false;
 	m_Opcion = '$';
 	fstream*Archivo = new fstream;
 	cout << "Escriba el nombre del archivo que quiera editar" << endl;
 	cin >> m_Nombre;
-	Archivo->open(m_Nombre + ".txt", ios::in);
+	for (int i = 0; i < m_Nombre.size(); i++)
+	{
+		if (m_Nombre[i] == '.')
+		{
+			if (m_Nombre.substr(i) == ".txt")
+			{
+				Archivo->open(m_Nombre, ios::in);
+				m_TxT = true;
+				break;
+			}
+		}
+	}
+	if (m_TxT == false)
+	{
+		Archivo->open(m_Nombre + ".txt", ios::in);
+	}
 	if (!*Archivo)
 	{
 		cout << "Archivo no encontrado volviendo al menu" << endl;
@@ -158,7 +197,14 @@ void Editar::Continuar()
 		}
 		Archivo->close();
 	///////////////////////////////////////////////////////////////////////////////
-		Archivo->open(m_Nombre + ".txt", ios::app);
+		if (m_TxT == false)
+		{
+			Archivo->open(m_Nombre + ".txt", ios::app);
+		}
+		if (m_TxT == true)
+		{
+			Archivo->open(m_Nombre, ios::app);
+		}
 		m_Contador = 1;
 		while (Archivo)
 		{
@@ -254,13 +300,20 @@ void Editar::Continuar()
 	
 }
 
-void Editar::Continuar(string N)
+void Editar::Continuar(string N, bool T)
 {
 	
 	fstream*Archivo = new fstream;
 	cout << "Escribe lo que quieras agragar al archivo, cuando quieras parar ingresa '&'" << endl;
 	cout << "--------------------------------" << endl;
-	Archivo->open(m_Nombre + ".txt", ios::app);
+	if (T == false)
+	{
+		Archivo->open(m_Nombre + ".txt", ios::app);
+	}
+	if (T == true)
+	{
+		Archivo->open(m_Nombre, ios::app);
+	}
 	m_Contador = 1;
 	while (m_Texto != "&")
 	{
